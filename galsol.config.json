@@ -1,9 +1,142 @@
 {
-  "name": "A website for a conference",
-  "slug": "a-website-for-a-conference-6ql6n",
-  "template": "blank",
-  "pages": [
-    "index"
-  ],
-  "version": 1
+  "generator": "ui-library",
+  "version": 1,
+  "style": "glass",
+  "palette": "aurora-night",
+  "fonts": "spacegrotesk+inter",
+  "spec": {
+    "style": "glass",
+    "palette": "aurora-night",
+    "fonts": "spacegrotesk+inter",
+    "event": {
+      "name": "ComConclave 2027"
+    },
+    "pages": [
+      {
+        "name": "index",
+        "title": "Home",
+        "sections": [
+          {
+            "type": "hero",
+            "classes": "fx-aurora",
+            "content": {
+              "badge": "OCTOBER 14-16, 2027 • SAN FRANCISCO & VIRTUAL",
+              "headline": "The Global Gathering for Community Builders & Creators",
+              "sub": "Join 5,000+ community strategist, developers, and ecosystem leaders defining the future of collective intelligence and digital belonging.",
+              "ctaText": "Secure Your Pass",
+              "ctaHref": "pages/register.html",
+              "image": "https://images.pexels.com/photos/9275222/pexels-photo-9275222.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+            }
+          },
+          {
+            "type": "countdown",
+            "classes": "fx-dotgrid",
+            "content": {
+              "title": "The Conclave Begins In",
+              "date": "2027-10-14T09:00:00"
+            }
+          },
+          {
+            "type": "about",
+            "content": {
+              "title": "Architecting the Next Era of Human Connection",
+              "body": "ComConclave is the premier summit designed specifically for community managers, platform founders, and developer advocates. Over three high-impact days, we dive deep into decentralized moderation, AI-assisted engagement, and sustainable monetization models that put members first. Whether you run a global open-source ecosystem or an exclusive private network, you will find your peers and your playbook here."
+            }
+          },
+          {
+            "type": "speakers",
+            "content": {
+              "title": "Featured Keynotes",
+              "items": [
+                {
+                  "name": "Dr. Aris Thorne",
+                  "role": "Director of Decentralized Social Networks, Protocol Labs",
+                  "photo": "https://lookaside.fbsbx.com/lookaside/crawler/instagram/aristhorneofficial/profile_pic.jpg"
+                },
+                {
+                  "name": "Sarah Jenkins",
+                  "role": "VP of Community and Ecosystem Growth, DevCollective",
+                  "photo": "https://msaagency.com/wp-content/uploads/2024/11/SarahMarieJenkins-6547-scaled.jpg"
+                },
+                {
+                  "name": "Marcus Chen",
+                  "role": "Author of 'The Belonging Economy' & Founder of CommonGround",
+                  "photo": "https://lookaside.fbsbx.com/lookaside/crawler/instagram/_marcus.chen_/profile_pic.jpg"
+                },
+                {
+                  "name": "Elena Rostova",
+                  "role": "Chief Moderator and Trust & Safety Lead, Nexus Interactive",
+                  "photo": "https://media.licdn.com/dms/image/v2/C5603AQEkmExfP1qUQQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1542288381922?e=2147483647&v=beta&t=KJftsQow6Hcpt9V4sRI0Uu5iDduiKXbk4-gmNa0qaBc"
+                }
+              ]
+            }
+          },
+          {
+            "type": "schedule",
+            "content": {
+              "title": "Conclave Track Highlights",
+              "items": [
+                {
+                  "time": "Day 1 - 10:00 AM",
+                  "title": "Keynote: The Sovereign Community",
+                  "desc": "How user-owned data and decentralized identity are reshaping member trust and platform governance."
+                },
+                {
+                  "time": "Day 1 - 2:00 PM",
+                  "title": "Panel: AI-Augmented Moderation",
+                  "desc": "Leading scaling strategies to support moderators using custom LLMs without losing the human touch."
+                },
+                {
+                  "time": "Day 2 - 11:30 AM",
+                  "title": "Workshop: Monetization Without Alienation",
+                  "desc": "Practical structures for introducing value-adds, token gates, and premium tiers that communities actually love."
+                },
+                {
+                  "time": "Day 3 - 3:00 PM",
+                  "title": "Closing Panel: The Metrics That Actually Matter",
+                  "desc": "Moving past vanity engagement numbers to measure true sentiment, retention, and ecosystem health."
+                }
+              ]
+            }
+          },
+          {
+            "type": "gallery",
+            "content": {
+              "title": "ComConclave Moments",
+              "images": [
+                "https://images.pexels.com/photos/301987/pexels-photo-301987.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/20733081/pexels-photo-20733081.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/35064539/pexels-photo-35064539.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/11299318/pexels-photo-11299318.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/25857615/pexels-photo-25857615.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/34594518/pexels-photo-34594518.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+              ]
+            }
+          },
+          {
+            "type": "cta",
+            "content": {
+              "title": "Ready to Scale Your Community?",
+              "sub": "Don't miss the definitive event of the year for community builders. Early bird pricing ends soon.",
+              "ctaText": "Register Now",
+              "ctaHref": "pages/register.html"
+            }
+          }
+        ]
+      },
+      {
+        "name": "register",
+        "title": "Register",
+        "sections": [
+          {
+            "type": "form",
+            "classes": "fx-aurora",
+            "content": {
+              "title": "Join ComConclave 2027"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
