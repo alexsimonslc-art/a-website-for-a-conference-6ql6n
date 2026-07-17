@@ -1,0 +1,9 @@
+{
+  "name": "A website for a conference",
+  "slug": "a-website-for-a-conference-6ql6n",
+  "template": "blank",
+  "pages": [
+    "index"
+  ],
+  "version": 1
+}
