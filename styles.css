@@ -6,7 +6,7 @@
   /* drives html{color-scheme} so the browser paints native UI (scrollbars,
      form controls) to match the palette instead of defaulting to white */
   --scheme:dark;
-  --font-display:'Space Grotesk', sans-serif;--font-body:'Inter', system-ui, sans-serif;
+  --font-display:'Syne', sans-serif;--font-body:'Plus Jakarta Sans', system-ui, sans-serif;
   --radius:16px;--radius-sm:10px;--radius-lg:24px;
   --shadow:0 24px 68px rgba(0,0,0,.8);
   --shadow-sm:0 8px 20px rgba(0,0,0,.6);
@@ -37,6 +37,8 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.05;margin
   transition:transform .2s var(--ease),filter .2s}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
 .btn-lg{padding:16px 34px;font-size:1.05rem}
+.btn-secondary{background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text);box-shadow:none}
+.btn-secondary:hover{background:rgba(255,255,255,0.12);color:var(--text)}
 
 /* nav — glassy sticky */
 .nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;
