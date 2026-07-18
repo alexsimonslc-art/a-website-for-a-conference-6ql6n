@@ -27,6 +27,76 @@
     }
     tick();setInterval(tick,1000);
   });
+  // Interactive 3D coverflow carousel
+  var init3DCarousel = function() {
+    var stage = document.querySelector('.carousel-3d-stage');
+    if (!stage) return;
+    var items = stage.querySelectorAll('.carousel-3d-item');
+    var prevBtn = document.querySelector('.carousel-3d-prev');
+    var nextBtn = document.querySelector('.carousel-3d-next');
+    var currentIndex = 0;
+    var total = items.length;
+    var theta = 360 / total;
+
+    function getRadius() {
+      var width = stage.offsetWidth || 320;
+      return Math.round((width / 2) / Math.tan(Math.PI / total)) + 20;
+    }
+
+    function rotateStage() {
+      var r = getRadius();
+      items.forEach(function(item, index) {
+        var offset = index - currentIndex;
+        // wrap index mathematically
+        if (offset < -total / 2) offset += total;
+        if (offset > total / 2) offset -= total;
+
+        var angle = theta * offset;
+        
+        if (offset === 0) {
+          item.classList.add('active');
+          item.style.transform = 'rotateY(' + angle + 'deg) translateZ(' + r + 'px) scale(1.08)';
+          item.style.opacity = '1';
+          item.style.pointerEvents = 'auto';
+          item.style.zIndex = '5';
+        } else {
+          item.classList.remove('active');
+          var isHidden = Math.abs(offset) > 1.8;
+          item.style.transform = 'rotateY(' + angle + 'deg) translateZ(' + (r * 0.85) + 'px) scale(0.85)';
+          item.style.opacity = isHidden ? '0' : '0.45';
+          item.style.pointerEvents = isHidden ? 'none' : 'auto';
+          item.style.zIndex = '2';
+        }
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + total) % total;
+        rotateStage();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % total;
+        rotateStage();
+      });
+    }
+
+    items.forEach(function(item, index) {
+      item.addEventListener('click', function() {
+        if (currentIndex !== index) {
+          currentIndex = index;
+          rotateStage();
+        }
+      });
+    });
+
+    window.addEventListener('resize', rotateStage);
+    rotateStage();
+  };
+
+  init3DCarousel();
 })();
 
 
