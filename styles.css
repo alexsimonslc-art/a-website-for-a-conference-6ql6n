@@ -149,10 +149,12 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.05;margin
 
 /* responsive */
 @media (max-width:760px){
-  .nav-links{position:fixed;inset:64px 0 auto 0;flex-direction:column;gap:0;background:color-mix(in srgb,var(--bg) 94%,transparent);
-    backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:10px 24px;transform:translateY(-140%);transition:transform .3s var(--ease)}
-  .nav.open .nav-links{transform:none}
+  .nav{overflow:visible !important}
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:color-mix(in srgb,var(--bg) 96%,transparent);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:10px 24px;transform:translateY(-150%);transition:transform .35s var(--ease);z-index:45;pointer-events:none;opacity:0}
+  .nav.open .nav-links{transform:none;pointer-events:auto;opacity:1}
   .nav-links a{padding:14px 0;border-bottom:1px solid var(--border)}
+  .nav-links a:last-child{border-bottom:none}
   .nav-burger{display:flex}
   .nav.open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .nav.open .nav-burger span:nth-child(2){opacity:0}
