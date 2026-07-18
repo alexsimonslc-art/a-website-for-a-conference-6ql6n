@@ -31,16 +31,21 @@
   var init3DCarousel = function() {
     var stage = document.querySelector('.carousel-3d-stage');
     if (!stage) return;
+    var viewport = document.querySelector('.gallery-3d-viewport');
     var items = stage.querySelectorAll('.carousel-3d-item');
     var prevBtn = document.querySelector('.carousel-3d-prev');
     var nextBtn = document.querySelector('.carousel-3d-next');
     var currentIndex = 0;
     var total = items.length;
     var theta = 360 / total;
+    var autoPlayTimer = null;
+    var autoPlayDelay = 4000; // 4 seconds interval
 
     function getRadius() {
-      var width = stage.offsetWidth || 320;
-      return Math.round((width / 2) / Math.tan(Math.PI / total)) + 20;
+      var width = stage.offsetWidth || 480;
+      // Responsive dynamic translation adjustment based on size
+      var baseFactor = width < 300 ? 1.25 : 1.05;
+      return Math.round((width / 2) / Math.tan(Math.PI / total)) * baseFactor;
     }
 
     function rotateStage() {
@@ -62,7 +67,7 @@
         } else {
           item.classList.remove('active');
           var isHidden = Math.abs(offset) > 1.8;
-          item.style.transform = 'rotateY(' + angle + 'deg) translateZ(' + (r * 0.85) + 'px) scale(0.85)';
+          item.style.transform = 'rotateY(' + angle + 'deg) translateZ(' + (r * 0.82) + 'px) scale(0.82)';
           item.style.opacity = isHidden ? '0' : '0.45';
           item.style.pointerEvents = isHidden ? 'none' : 'auto';
           item.style.zIndex = '2';
@@ -70,16 +75,38 @@
       });
     }
 
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % total;
+      rotateStage();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + total) % total;
+      rotateStage();
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(nextSlide, autoPlayDelay);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
     if (prevBtn) {
       prevBtn.addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + total) % total;
-        rotateStage();
+        prevSlide();
+        startAutoPlay(); // Reset interval on interaction
       });
     }
     if (nextBtn) {
       nextBtn.addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % total;
-        rotateStage();
+        nextSlide();
+        startAutoPlay(); // Reset interval on interaction
       });
     }
 
@@ -88,12 +115,23 @@
         if (currentIndex !== index) {
           currentIndex = index;
           rotateStage();
+          startAutoPlay(); // Reset interval on interaction
         }
       });
     });
 
+    // Pause on interaction / hover
+    if (viewport) {
+      viewport.addEventListener('mouseenter', stopAutoPlay);
+      viewport.addEventListener('mouseleave', startAutoPlay);
+      // Support mobile touch pauses
+      viewport.addEventListener('touchstart', stopAutoPlay, {passive: true});
+      viewport.addEventListener('touchend', startAutoPlay, {passive: true});
+    }
+
     window.addEventListener('resize', rotateStage);
     rotateStage();
+    startAutoPlay();
   };
 
   init3DCarousel();
