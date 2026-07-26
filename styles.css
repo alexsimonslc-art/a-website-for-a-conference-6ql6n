@@ -105,90 +105,138 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.05;margin
   background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .cd-unit small{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
 
-/* gallery Depth Parallax perspective — Cinematic Redesign */
-.gallery-parallax-viewport {
-  perspective: 1200px;
-  overflow: hidden;
-  padding: 60px 0;
+/* gallery 3D Orbiter — Ultimate Cinematic Space Gallery */
+.gallery-orbiter-viewport {
   position: relative;
+  width: 100%;
+  min-height: 540px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 550px;
-  background: radial-gradient(circle at center, rgba(6,182,212,0.02) 0%, transparent 70%);
+  overflow: hidden;
+  padding: 40px 0;
+  background: radial-gradient(circle at center, rgba(6,182,212,0.03) 0%, transparent 75%);
 }
 
-.carousel-ambient-glow {
+.orbiter-ambient-glow {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 550px;
+  width: 580px;
   height: 380px;
-  background: rgba(6,182,212,0.18);
-  filter: blur(120px);
+  background: radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 70%);
+  filter: blur(110px);
   pointer-events: none;
   z-index: 0;
-  transition: background 0.8s var(--ease);
+  transition: background 0.8s ease;
   border-radius: 50%;
 }
 
-.carousel-parallax-stage-wrapper {
-  width: 100%;
+.orbiter-controls-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.orbiter-nav-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(16, 19, 34, 0.8);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s var(--ease);
+  pointer-events: auto;
+  user-select: none;
+}
+
+.orbiter-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.orbiter-nav-btn:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: transparent;
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 10px 20px rgba(6, 182, 212, 0.35);
+}
+
+.orbiter-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.orbiter-stage-container {
   position: relative;
+  width: 100%;
+  height: 380px;
+  perspective: 1400px;
   overflow: visible;
   display: flex;
   justify-content: center;
-}
-
-.carousel-parallax-stage {
-  display: flex;
-  gap: 32px;
-  width: auto;
-  transform-style: preserve-3d;
+  align-items: center;
   z-index: 2;
-  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
 }
 
-.carousel-parallax-item {
+.orbiter-stage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orbiter-item {
+  position: absolute;
+  width: 440px;
+  height: 280px;
+  left: 50%;
+  top: 50%;
+  margin-left: -220px;
+  margin-top: -140px;
+  transform-style: preserve-3d;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+              visibility 0.75s ease;
+  cursor: pointer;
+  backface-visibility: hidden;
+  user-select: none;
+}
+
+.orbiter-card-inner {
   position: relative;
-  flex: 0 0 auto;
-  width: 580px;
-  height: 360px;
+  width: 100%;
+  height: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-  overflow: hidden;
   background: #0b0d16;
-  backface-visibility: hidden;
-  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-              filter 0.85s var(--ease),
-              border-color 0.4s;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-}
-
-.carousel-img-wrap {
-  position: absolute;
-  inset: 0;
   overflow: hidden;
-  border-radius: inherit;
-  z-index: 1;
+  box-shadow: var(--shadow);
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
-.carousel-img {
-  width: 130%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-/* Ambient gradient inside slide */
-.carousel-parallax-item::before {
+.orbiter-card-inner::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -197,7 +245,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.05;margin
   pointer-events: none;
 }
 
-.carousel-parallax-item::after {
+.orbiter-card-inner::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -206,206 +254,115 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.05;margin
   pointer-events: none;
 }
 
-.carousel-parallax-item.pos-active {
-  border-color: var(--accent);
-  box-shadow: 0 20px 45px rgba(6, 182, 212, 0.15), var(--shadow);
-}
-
-/* Text alignment & styling inside slide */
-.carousel-parallax-item .item-meta {
+.orbiter-img {
   position: absolute;
-  bottom: 32px;
-  left: 36px;
-  right: 36px;
-  z-index: 3;
-  transform: translateY(12px);
-  opacity: 0;
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.75s ease;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  transition: transform 0.6s var(--ease);
 }
 
-.carousel-parallax-item.pos-active .item-meta {
+.orbiter-item.pos-active .orbiter-card-inner {
+  border-color: var(--accent);
+  box-shadow: 0 15px 35px rgba(6, 182, 212, 0.22), var(--shadow);
+}
+
+.orbiter-item.pos-active .orbiter-img {
+  transform: scale(1.05);
+}
+
+.orbiter-meta {
+  position: absolute;
+  bottom: 24px;
+  left: 28px;
+  right: 28px;
+  z-index: 3;
+  text-align: left;
+  transform: translateY(10px);
+  opacity: 0.8;
+  transition: transform 0.6s var(--ease), opacity 0.6s ease;
+}
+
+.orbiter-item.pos-active .orbiter-meta {
   transform: translateY(0);
   opacity: 1;
 }
 
-.carousel-parallax-item .item-title {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 6px 0 0;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-
-.carousel-parallax-item .item-tag {
-  font-size: 0.8rem;
+.orbiter-tag {
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--accent);
   font-weight: 700;
   display: inline-block;
-  position: relative;
+  margin-bottom: 4px;
 }
 
-.carousel-parallax-item.pos-active .item-tag::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background: var(--grad);
-  animation: expandLine 0.6s var(--ease) forwards;
+.orbiter-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-@keyframes expandLine {
-  from { width: 0; }
-  to { width: 40px; }
-}
-
-/* Controls Hub styling */
-.carousel-controls-hub {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  margin-top: 40px;
-  width: 100%;
-  max-width: 580px;
+.orbiter-indicator-hud {
+  margin-top: 32px;
   z-index: 10;
 }
 
-.carousel-parallax-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-}
-
-.carousel-parallax-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: rgba(16, 19, 34, 0.85);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-size: 1.6rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s var(--ease);
-  box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  user-select: none;
-  touch-action: manipulation;
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-parallax-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--grad);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: -1;
-}
-
-.carousel-parallax-btn:hover {
-  color: var(--on-accent);
-  border-color: transparent;
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 10px 20px rgba(6, 182, 212, 0.35);
-}
-
-.carousel-parallax-btn:hover::before {
-  opacity: 1;
-}
-
-.carousel-parallax-btn:active {
-  transform: scale(0.96);
-}
-
-.carousel-counter {
+.orbiter-counter {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--muted);
   display: flex;
   align-items: center;
   gap: 8px;
-  user-select: none;
+  background: rgba(16, 19, 34, 0.7);
+  padding: 6px 18px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.carousel-counter .current-num {
+.orbiter-counter .current-orbiter-num {
   color: var(--accent);
-  font-size: 1.3rem;
-}
-
-/* Progress track */
-.carousel-progress-track {
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--grad);
-  transition: width 0.1s linear;
-  box-shadow: 0 0 8px var(--accent);
-}
-
-/* Dots */
-.carousel-dots {
-  display: flex;
-  gap: 10px;
-}
-
-.carousel-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  border: none;
-  cursor: pointer;
-  transition: all 0.4s var(--ease);
-  padding: 0;
-}
-
-.carousel-dot.active {
-  background: var(--accent);
-  transform: scale(1.25);
-  box-shadow: 0 0 8px var(--accent);
+  font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {
-  .gallery-parallax-viewport {
-    min-height: 440px;
-    padding: 30px 0;
+  .gallery-orbiter-viewport {
+    min-height: 420px;
+    padding: 20px 0;
   }
-  .carousel-parallax-item {
-    width: 310px;
-    height: 250px;
+  .orbiter-stage-container {
+    height: 300px;
   }
-  .carousel-parallax-item .item-meta {
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
+  .orbiter-item {
+    width: 290px;
+    height: 195px;
+    margin-left: -145px;
+    margin-top: -97px;
   }
-  .carousel-parallax-item .item-title {
-    font-size: 1.3rem;
+  .orbiter-meta {
+    bottom: 16px;
+    left: 18px;
+    right: 18px;
   }
-  .carousel-controls-hub {
-    max-width: 310px;
+  .orbiter-title {
+    font-size: 1.15rem;
+  }
+  .orbiter-controls-wrapper {
+    padding: 0 20px;
+  }
+  .orbiter-nav-btn {
+    width: 44px;
+    height: 44px;
   }
 }
 
