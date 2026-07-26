@@ -126,86 +126,88 @@
 <section class="section" id="gallery">
   <div class="section-inner">
     <h2 class="section-title reveal">ComConclave Moments</h2>
-    <p class="section-lead reveal" style="margin-bottom: 30px;">Experience our historic milestones through multi-layered perspective parallax shifts.</p>
+    <p class="section-lead reveal" style="margin-bottom: 40px;">Explore our historic milestones inside an ultimate interactive 3D Orbiter Space Gallery.</p>
     
-    <div class="gallery-parallax-viewport reveal" id="carousel-viewport">
-      <div class="carousel-ambient-glow" id="carousel-glow"></div>
+    <div class="gallery-orbiter-viewport reveal" id="orbiter-viewport">
+      <div class="orbiter-ambient-glow" id="orbiter-glow"></div>
 
-      <div class="carousel-parallax-stage-wrapper">
-        <div class="carousel-parallax-stage" id="carousel-stage">
-          <div class="carousel-parallax-item">
-            <div class="carousel-img-wrap">
-              <div class="carousel-img" style="background-image:url('https://images.pexels.com/photos/301987/pexels-photo-301987.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
-            </div>
-            <div class="item-meta">
-              <span class="item-tag">Main Stage</span>
-              <h3 class="item-title">Opening Address</h3>
-            </div>
-          </div>
-          <div class="carousel-parallax-item">
-            <div class="carousel-img-wrap">
-              <div class="carousel-img" style="background-image:url('https://images.pexels.com/photos/20733081/pexels-photo-20733081.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
-            </div>
-            <div class="item-meta">
-              <span class="item-tag">Panels</span>
-              <h3 class="item-title">Ecosystem Roundtables</h3>
-            </div>
-          </div>
-          <div class="carousel-parallax-item">
-            <div class="carousel-img-wrap">
-              <div class="carousel-img" style="background-image:url('https://images.pexels.com/photos/35064539/pexels-photo-35064539.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
-            </div>
-            <div class="item-meta">
-              <span class="item-tag">Networking</span>
-              <h3 class="item-title">Builders' Coffee Sprints</h3>
+      <!-- Professional Control Overlay flanking the sides -->
+      <div class="orbiter-controls-wrapper">
+        <button class="orbiter-nav-btn orbiter-prev" id="orbiter-prev" aria-label="Previous Moment">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="orbiter-nav-btn orbiter-next" id="orbiter-next" aria-label="Next Moment">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- The 3D stage ring containing our items -->
+      <div class="orbiter-stage-container">
+        <div class="orbiter-stage" id="orbiter-stage">
+          <div class="orbiter-item">
+            <div class="orbiter-card-inner">
+              <div class="orbiter-img" style="background-image:url('https://images.pexels.com/photos/301987/pexels-photo-301987.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
+              <div class="orbiter-meta">
+                <span class="orbiter-tag">Main Stage</span>
+                <h3 class="orbiter-title">Opening Address</h3>
+              </div>
             </div>
           </div>
-          <div class="carousel-parallax-item">
-            <div class="carousel-img-wrap">
-              <div class="carousel-img" style="background-image:url('https://images.pexels.com/photos/11299318/pexels-photo-11299318.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
-            </div>
-            <div class="item-meta">
-              <span class="item-tag">Keynote</span>
-              <h3 class="item-title">The Belonging Economy</h3>
-            </div>
-          </div>
-          <div class="carousel-parallax-item">
-            <div class="carousel-img-wrap">
-              <div class="carousel-img" style="background-image:url('https://images.pexels.com/photos/25857615/pexels-photo-25857615.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
-            </div>
-            <div class="item-meta">
-              <span class="item-tag">Hacks</span>
-              <h3 class="item-title">Co-Design Labs</h3>
+          <div class="orbiter-item">
+            <div class="orbiter-card-inner">
+              <div class="orbiter-img" style="background-image:url('https://images.pexels.com/photos/20733081/pexels-photo-20733081.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
+              <div class="orbiter-meta">
+                <span class="orbiter-tag">Panels</span>
+                <h3 class="orbiter-title">Ecosystem Roundtables</h3>
+              </div>
             </div>
           </div>
-          <div class="carousel-parallax-item">
-            <div class="carousel-img-wrap">
-              <div class="carousel-img" style="background-image:url('https://images.pexels.com/photos/34594518/pexels-photo-34594518.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
+          <div class="orbiter-item">
+            <div class="orbiter-card-inner">
+              <div class="orbiter-img" style="background-image:url('https://images.pexels.com/photos/35064539/pexels-photo-35064539.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
+              <div class="orbiter-meta">
+                <span class="orbiter-tag">Networking</span>
+                <h3 class="orbiter-title">Builders' Coffee Sprints</h3>
+              </div>
             </div>
-            <div class="item-meta">
-              <span class="item-tag">Afterhours</span>
-              <h3 class="item-title">Sovereign Social Mixer</h3>
+          </div>
+          <div class="orbiter-item">
+            <div class="orbiter-card-inner">
+              <div class="orbiter-img" style="background-image:url('https://images.pexels.com/photos/11299318/pexels-photo-11299318.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
+              <div class="orbiter-meta">
+                <span class="orbiter-tag">Keynote</span>
+                <h3 class="orbiter-title">The Belonging Economy</h3>
+              </div>
+            </div>
+          </div>
+          <div class="orbiter-item">
+            <div class="orbiter-card-inner">
+              <div class="orbiter-img" style="background-image:url('https://images.pexels.com/photos/25857615/pexels-photo-25857615.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
+              <div class="orbiter-meta">
+                <span class="orbiter-tag">Hacks</span>
+                <h3 class="orbiter-title">Co-Design Labs</h3>
+              </div>
+            </div>
+          </div>
+          <div class="orbiter-item">
+            <div class="orbiter-card-inner">
+              <div class="orbiter-img" style="background-image:url('https://images.pexels.com/photos/34594518/pexels-photo-34594518.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200')"></div>
+              <div class="orbiter-meta">
+                <span class="orbiter-tag">Afterhours</span>
+                <h3 class="orbiter-title">Sovereign Social Mixer</h3>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
-      <div class="carousel-controls-hub">
-        <div class="carousel-progress-track">
-          <div class="carousel-progress-fill" id="carousel-progress"></div>
-        </div>
 
-        <div class="carousel-parallax-controls">
-          <button class="carousel-parallax-btn" id="carousel-prev" aria-label="Previous Moment">&#8249;</button>
-          <div class="carousel-counter">
-            <span class="current-num" id="carousel-current">01</span>
-            <span>/</span>
-            <span id="carousel-total">06</span>
-          </div>
-          <button class="carousel-parallax-btn" id="carousel-next" aria-label="Next Moment">&#8250;</button>
+      <!-- Professional Counter Indicator below -->
+      <div class="orbiter-indicator-hud">
+        <div class="orbiter-counter">
+          <span class="current-orbiter-num" id="orbiter-current">1</span>
+          <span class="orbiter-sep">/</span>
+          <span class="total-orbiter-num" id="orbiter-total">6</span>
         </div>
-
-        <div class="carousel-dots" id="carousel-dots"></div>
       </div>
     </div>
   </div>
@@ -213,152 +215,197 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const stage = document.getElementById("carousel-stage");
-  const items = Array.from(stage.querySelectorAll(".carousel-parallax-item"));
-  const prevBtn = document.getElementById("carousel-prev");
-  const nextBtn = document.getElementById("carousel-next");
-  const currentNum = document.getElementById("carousel-current");
-  const totalNum = document.getElementById("carousel-total");
-  const progressFill = document.getElementById("carousel-progress");
-  const dotsContainer = document.getElementById("carousel-dots");
-  const glow = document.getElementById("carousel-glow");
+  const stage = document.getElementById("orbiter-stage");
+  if (!stage) return;
+  const items = Array.from(stage.querySelectorAll(".orbiter-item"));
+  const prevBtn = document.getElementById("orbiter-prev");
+  const nextBtn = document.getElementById("orbiter-next");
+  const currentNum = document.getElementById("orbiter-current");
+  const totalNum = document.getElementById("orbiter-total");
+  const glow = document.getElementById("orbiter-glow");
 
   let activeIndex = 0;
   const totalItems = items.length;
-  totalNum.textContent = String(totalItems).padStart(2, '0');
+  if (totalNum) totalNum.textContent = totalItems;
 
-  items.forEach((_, i) => {
-    const dot = document.createElement("button");
-    dot.className = "carousel-dot" + (i === 0 ? " active" : "");
-    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-    dot.addEventListener("click", () => {
-      activeIndex = i;
-      updateCarousel();
-      resetAutoplay();
-    });
-    dotsContainer.appendChild(dot);
-  });
+  // Orbit parameters
+  let theta = 360 / totalItems;
+  let targetRotation = 0;
+  let currentRotation = 0;
+  let isDragging = false;
+  let startX = 0;
+  let rotationOnStart = 0;
+  let autoPlayTimer = null;
 
-  const dots = Array.from(dotsContainer.querySelectorAll(".carousel-dot"));
-
-  function updateCarousel() {
-    const stageWidth = stage.parentElement.offsetWidth;
-    const itemWidth = items[0].offsetWidth;
-    
-    // Position active slide exactly in middle with high performance translations
-    const gap = window.innerWidth <= 768 ? 16 : 32;
-    const offset = (stageWidth / 2) - (itemWidth / 2) - (activeIndex * (itemWidth + gap));
-    stage.style.transform = `translateX(${offset}px)`;
-
-    items.forEach((item, index) => {
-      const img = item.querySelector(".carousel-img");
-      const diff = index - activeIndex;
-      
-      item.classList.toggle("pos-active", index === activeIndex);
-
-      if (img) {
-        // Deep kinetic horizontal offset in opposite scroll direction
-        img.style.transform = `translateX(${diff * -15}%) scale(1.15)`;
-      }
-
-      // Elegant cinematic frame adjustments
-      if (index === activeIndex) {
-        item.style.transform = "scale(1.04) rotateY(0deg)";
-        item.style.opacity = "1";
-        item.style.filter = "brightness(1) blur(0px)";
-        item.style.zIndex = "10";
-      } else {
-        const sideTilt = diff > 0 ? -14 : 14;
-        item.style.transform = `scale(0.88) rotateY(${sideTilt}deg)`;
-        item.style.opacity = Math.abs(diff) === 1 ? "0.6" : "0.15";
-        item.style.filter = "brightness(0.4) blur(1px)";
-        item.style.zIndex = "5";
-      }
-    });
-
-    currentNum.textContent = String(activeIndex + 1).padStart(2, '0');
-
-    dots.forEach((dot, index) => {
-      dot.className = "carousel-dot" + (index === activeIndex ? " active" : "");
-    });
-
-    const colors = [
-      "radial-gradient(circle, rgba(6,182,212,0.25) 0%, transparent 70%)",
-      "radial-gradient(circle, rgba(99,102,241,0.22) 0%, transparent 70%)",
-      "radial-gradient(circle, rgba(236,72,153,0.2) 0%, transparent 70%)",
-      "radial-gradient(circle, rgba(168,85,247,0.22) 0%, transparent 70%)",
-      "radial-gradient(circle, rgba(245,158,11,0.18) 0%, transparent 70%)",
-      "radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%)"
-    ];
-    glow.style.background = colors[activeIndex % colors.length];
+  function getOrbitRadius() {
+    const width = window.innerWidth;
+    if (width <= 480) return 210;
+    if (width <= 768) return 320;
+    if (width <= 1024) return 460;
+    return 580; // Ideal distance for perfect depth & circular perspective projection
   }
 
-  items.forEach((item, index) => {
-    item.addEventListener("click", (e) => {
-      if (index !== activeIndex) {
-        e.preventDefault();
-        activeIndex = index;
-        updateCarousel();
-        resetAutoplay();
-      }
+  function update3DOrbiter() {
+    const radius = getOrbitRadius();
+    
+    items.forEach((item, index) => {
+      // Calculate angle of each card relative to stage rotation
+      const angleDeg = (index * theta) + currentRotation;
+      const angleRad = (angleDeg * Math.PI) / 180;
+
+      // Mathematical 3D Orbit Coordinates
+      const x = Math.sin(angleRad) * radius;
+      const z = Math.cos(angleRad) * radius;
+      
+      // Calculate depth scale (1.0 at closest front, 0.45 at farthest back)
+      const normalizedDepth = (z + radius) / (2 * radius); // 0 (back) to 1 (front)
+      const scale = 0.45 + (normalizedDepth * 0.55);
+      
+      // Opacity scales beautifully to create focus on front items
+      const opacity = 0.15 + (normalizedDepth * 0.85);
+
+      // Smoothly hide backmost cards fully to optimize performance
+      const isVisible = normalizedDepth > 0.15;
+      item.style.visibility = isVisible ? "visible" : "hidden";
+      item.style.pointerEvents = normalizedDepth > 0.75 ? "auto" : "none";
+
+      // 3D Matrix Transformations
+      item.style.transform = `translate3d(${x}px, 0px, ${z}px) scale(${scale})`;
+      item.style.opacity = opacity;
+      item.style.zIndex = Math.round(normalizedDepth * 100);
+
+      // Add active state to front item
+      const isCurrentlyFront = index === activeIndex;
+      item.classList.toggle("pos-active", isCurrentlyFront);
     });
-  });
+
+    if (currentNum) {
+      currentNum.textContent = activeIndex + 1;
+    }
+
+    // Dynamic glowing accent background
+    const colors = [
+      "radial-gradient(circle, rgba(6,182,212,0.22) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(236,72,153,0.18) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(245,158,11,0.16) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%)"
+    ];
+    if (glow) {
+      glow.style.background = colors[activeIndex % colors.length];
+    }
+  }
+
+  // Linear Interpolation loop for ultra-smooth inertia momentum rotation
+  function animate() {
+    const diff = targetRotation - currentRotation;
+    // Apply smooth easing
+    if (Math.abs(diff) > 0.05) {
+      currentRotation += diff * 0.1;
+      update3DOrbiter();
+    }
+    requestAnimationFrame(animate);
+  }
+
+  function rotateToActive() {
+    // Calculate the shortest mathematical angular distance to rotate to the front (0 degrees)
+    let diffAngle = - (activeIndex * theta);
+    
+    // Ensure we rotate using the shortest path around the circle
+    let currentNorm = currentRotation % 360;
+    let targetNorm = diffAngle % 360;
+    
+    if (targetNorm - currentNorm > 180) {
+      currentRotation += 360;
+    } else if (targetNorm - currentNorm < -180) {
+      currentRotation -= 360;
+    }
+
+    targetRotation = diffAngle;
+    resetAutoplay();
+  }
 
   function showNext() {
     activeIndex = (activeIndex + 1) % totalItems;
-    updateCarousel();
+    rotateToActive();
   }
 
   function showPrev() {
     activeIndex = (activeIndex - 1 + totalItems) % totalItems;
-    updateCarousel();
+    rotateToActive();
   }
 
-  prevBtn.addEventListener("click", () => { showPrev(); resetAutoplay(); });
-  nextBtn.addEventListener("click", () => { showNext(); resetAutoplay(); });
-
-  let progressVal = 0;
-  let progressInterval;
-  const slideDuration = 6000;
-
-  function startAutoplay() {
-    progressVal = 0;
-    progressFill.style.width = "0%";
-    
-    progressInterval = setInterval(() => {
-      progressVal += 100 / (slideDuration / 50);
-      progressFill.style.width = Math.min(progressVal, 100) + "%";
-      if (progressVal >= 100) {
-        showNext();
-        progressVal = 0;
+  // Click on items to rotate them to the front
+  items.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      if (activeIndex !== index) {
+        activeIndex = index;
+        rotateToActive();
       }
-    }, 50);
+    });
+  });
+
+  if (prevBtn) prevBtn.addEventListener("click", showPrev);
+  if (nextBtn) nextBtn.addEventListener("click", showNext);
+
+  // Swipe Gestures
+  const viewport = document.getElementById("orbiter-viewport");
+  if (viewport) {
+    viewport.addEventListener("touchstart", (e) => {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      rotationOnStart = currentRotation;
+      stopAutoplay();
+    }, { passive: true });
+
+    viewport.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      const diffX = e.touches[0].clientX - startX;
+      // Convert swipe pixels to rotation degrees smoothly
+      const sensitivity = 0.35;
+      targetRotation = rotationOnStart + (diffX * sensitivity);
+      currentRotation = targetRotation;
+      update3DOrbiter();
+    }, { passive: true });
+
+    viewport.addEventListener("touchend", (e) => {
+      isDragging = false;
+      // Snap to nearest item based on final rotation angle
+      const snappedIndex = Math.round(-currentRotation / theta) % totalItems;
+      activeIndex = (snappedIndex + totalItems) % totalItems;
+      rotateToActive();
+    }, { passive: true });
+  }
+
+  // Autoplay functionality
+  function startAutoplay() {
+    stopAutoplay();
+    autoPlayTimer = setInterval(showNext, 5000);
+  }
+
+  function stopAutoplay() {
+    if (autoPlayTimer) clearInterval(autoPlayTimer);
   }
 
   function resetAutoplay() {
-    clearInterval(progressInterval);
     startAutoplay();
   }
 
-  let touchStartX = 0;
-  stage.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-  }, { passive: true });
+  // Handle Resize beautifully
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      update3DOrbiter();
+    }, 100);
+  });
 
-  stage.addEventListener("touchend", (e) => {
-    const diff = e.changedTouches[0].clientX - touchStartX;
-    if (diff > 60) {
-      showPrev();
-      resetAutoplay();
-    } else if (diff < -60) {
-      showNext();
-      resetAutoplay();
-    }
-  }, { passive: true });
-
-  window.addEventListener("resize", updateCarousel);
-  
-  updateCarousel();
+  // Init
+  targetRotation = - (activeIndex * theta);
+  currentRotation = targetRotation;
+  update3DOrbiter();
+  animate();
   startAutoplay();
 });
 </script>
