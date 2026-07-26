@@ -60,22 +60,36 @@
           </div>
         </div>
       </div>
-      <div class="reveal" style="display: flex; flex-direction: column; gap: 32px;">
-        <div>
-          <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 12px; color: var(--accent);">General Inquiries</h3>
-          <iframe src="https://galsol.in/gs-form-view?f=event-feedback-5fteq&embed=1" 
-            title="General Inquiries Form"
-            data-gs-auto="1"
-            style="display:block;width:100%;height:500px;border:0;background:transparent"
-            allowtransparency="true" loading="lazy"></iframe>
-        </div>
-        <div style="border-top: 1px solid var(--border); padding-top: 32px;">
-          <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 12px; color: var(--accent2);">Apply for Co-Design Workshop</h3>
-          <iframe src="https://galsol.in/gs-form-view?f=workshop-registration-2026-c3dka&embed=1" 
-            title="Workshop Application Form"
-            data-gs-auto="1"
-            style="display:block;width:100%;height:500px;border:0;background:transparent"
-            allowtransparency="true" loading="lazy"></iframe>
+      <div class="contact-form-card reveal">
+        <form id="custom-contact-form" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Full Name</label>
+            <input type="text" id="contact-name" class="form-input" placeholder="Alex Rivera" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" class="form-input" placeholder="alex@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-subject">Topic of Interest</label>
+            <select id="contact-subject" class="form-input" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Sponsorship">Sponsorship Opportunities</option>
+              <option value="Speaking">Speaking / Track Inquiries</option>
+              <option value="Tickets">Ticket Packages &amp; Group Rates</option>
+              <option value="General">General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Your Message</label>
+            <textarea id="contact-message" class="form-input" placeholder="Tell us how we can help you..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-shine" style="width: 100%; justify-content: center; margin-top: 10px;">Send Message</button>
+        </form>
+        <div id="contact-success" class="form-success-msg">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <h3>Message Dispatched!</h3>
+          <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">Thank you for reaching out. A Conclave organizer will review your inquiry and connect with you within 24 hours.</p>
         </div>
       </div>
     </div>
@@ -96,26 +110,15 @@
 </footer>
 <script src="../script.js"></script>
 <script>
-/* GalSol GS Form auto-height — sizes the frame to the form. */
-(function(){
-  if (window.__galsolAutoH) return; window.__galsolAutoH = 1;
-  var GALSOL_ORIGIN = "https://galsol.in";
-  window.addEventListener('message', function (e) {
-    if (e.origin !== GALSOL_ORIGIN) return;
-    var d = e.data;
-    if (!d || d.source !== 'gsform' || typeof d.height !== 'number') return;
-    var frames = document.querySelectorAll('iframe[data-gs-auto="1"]');
-    for (var i = 0; i < frames.length; i++) {
-      if (frames[i].contentWindow !== e.source) continue;
-      var h = Math.ceil(d.height);
-      if (!(h > 0)) return;
-      if (h < 200) h = 200;
-      if (h > 6000) h = 6000;
-      frames[i].style.height = h + 'px';
-      return;
-    }
-  });
-})();
+function handleContactSubmit(event) {
+  event.preventDefault();
+  var form = document.getElementById('custom-contact-form');
+  var success = document.getElementById('contact-success');
+  if (form && success) {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  }
+}
 </script>
 </body>
 </html>
