@@ -1,0 +1,48 @@
+/* ===== Home Page Styles ===== */
+.hero-section {
+  background: radial-gradient(circle at 50% 20%, rgba(99,102,241,0.25), transparent 60%), #000;
+}
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+}
+.text-gradient {
+  background: linear-gradient(90deg, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.countdown-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 14px 18px;
+  min-width: 70px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.countdown-box span { font-size: 1.8rem; font-weight: 700; }
+.countdown-box small { color: #9ca3af; font-size: 0.75rem; margin-top: 4px; }
+
+.stat-card, .feature-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 28px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.stat-card:hover, .feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99,102,241,0.4);
+}
+
+.testimonial-slider {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 30px;
+  min-height: 150px;
+}
+
+#sponsors-grid img { height: 50px; filter: grayscale(1) brightness(2); opacity: 0.8; transition: opacity 0.3s; }
+#sponsors-grid img:hover { opacity: 1; filter: none; }

@@ -1,0 +1,30 @@
+/* ===== Shared Confirmation Page Styles ===== */
+.checkmark-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.primary-btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.secondary-btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
