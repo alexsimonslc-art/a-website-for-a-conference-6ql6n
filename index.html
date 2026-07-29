@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComConclave 2027 - Pressure peaks. One champion rises.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/home.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+  </style>
+</head>
+<body class="pt-16">
+
+  <!-- Navigation -->
+  <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 relative">
+        <a href="index.html" class="flex items-center gap-2 text-white font-bold text-lg">
+          <img src="assets/logo.png" alt="Logo" class="h-9 w-auto onerror-fallback" onerror="this.style.display='none'" />
+          <span>ComConclave 2027</span>
+        </a>
+        <div id="desktop-nav" class="hidden md:flex items-center gap-8 relative">
+          <a href="index.html" data-href="/" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2">
+            Home
+            <span class="nav-active-line"></span>
+          </a>
+          <a href="about.html" data-href="/about" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2">
+            About
+            <span class="nav-active-line"></span>
+          </a>
+          <a href="events.html" data-href="/events" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2">
+            Events
+            <span class="nav-active-line"></span>
+          </a>
+          <a href="schedule.html" data-href="/schedule" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2">
+            Schedule
+            <span class="nav-active-line"></span>
+          </a>
+          <a href="sponsors.html" data-href="/sponsors" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2">
+            Sponsors
+            <span class="nav-active-line"></span>
+          </a>
+          <a href="contact.html" data-href="/contact" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2">
+            Contact
+            <span class="nav-active-line"></span>
+          </a>
+        </div>
+        <div class="hidden md:block">
+          <a href="registration.html" class="inline-block px-5 py-2 rounded-md bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity">
+            Register Now
+          </a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-gray-300 hover:text-white hover:bg-white/10 transition-colors focus:outline-none" aria-label="Toggle menu">
+          <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="mobile-menu-closed md:hidden overflow-hidden">
+        <div class="flex flex-col gap-1 pb-4">
+          <a href="index.html" data-href="/" class="mobile-nav-link px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors">Home</a>
+          <a href="about.html" data-href="/about" class="mobile-nav-link px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors">About</a>
+          <a href="events.html" data-href="/events" class="mobile-nav-link px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors">Events</a>
+          <a href="schedule.html" data-href="/schedule" class="mobile-nav-link px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors">Schedule</a>
+          <a href="sponsors.html" data-href="/sponsors" class="mobile-nav-link px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors">Sponsors</a>
+          <a href="contact.html" data-href="/contact" class="mobile-nav-link px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors">Contact</a>
+          <a href="registration.html" class="mt-2 text-center px-5 py-3 rounded-md bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-semibold">
+            Register Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section relative min-h-screen 
