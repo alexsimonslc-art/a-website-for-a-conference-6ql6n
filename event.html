@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Events - STRATEGIA'26</title>
 <meta name="description" content="Four specialized competitions testing different aspects of business strategy, leading to the ultimate championship finale." />
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="/css/style.css" />
 <style>
   /* ---------- Hero ---------- */
   .hero-events {
@@ -128,7 +128,7 @@
 
 <!-- HERO -->
 <header class="hero-events">
-  <video autoplay loop muted playsinline poster="attached_assets/hero-poster.jpg" onerror="this.style.display='none'">
+  <video autoplay loop muted playsinline poster="/attached_assets/hero-poster.jpg" onerror="this.style.display='none'">
     <source src="/attached_assets/strategia_logo_compressed.mp4" type="video/mp4">
   </video>
   <div class="hero-fallback-bg"></div>
@@ -193,7 +193,7 @@
       <div class="event-media-wrap reveal-left">
         <div class="event-media-inner">
           <div class="event-media-frame">
-            <img class="event-media" src="attached_assets/StrategIQ_1756909440871.png"
+            <img class="event-media" src="/attached_assets/StrategIQ_1756909440871.png"
                  onerror="this.src='https://placehold.co/600x400/002244/FFFFFF?text=Event+Image'"
                  alt="StrategIQ Competition" />
           </div>
@@ -218,7 +218,7 @@
       <div class="event-media-wrap reveal-right">
         <div class="event-media-inner" style="background: linear-gradient(135deg, var(--strategia-red), #b91c1c 60%);">
           <div class="event-media-frame">
-            <img class="event-media" src="attached_assets/Market-Masters_1756909440872.jpg"
+            <img class="event-media" src="/attached_assets/Market Masters_1756909440872.jpg"
                  onerror="this.src='https://placehold.co/600x400/002244/FFFFFF?text=Event+Image'"
                  alt="Market Masters Competition" />
           </div>
@@ -243,7 +243,7 @@
       <div class="event-media-wrap reveal-left">
         <div class="event-media-inner" style="background: linear-gradient(135deg, #1f2937, #111827 60%);">
           <div class="event-media-frame">
-            <img class="event-media" src="attached_assets/VentureX_1756909440869.png"
+            <img class="event-media" src="/attached_assets/VentureX_1756909440869.png"
                  onerror="this.src='https://placehold.co/600x400/002244/FFFFFF?text=Event+Image'"
                  alt="VentureX Competition" />
           </div>
@@ -268,7 +268,7 @@
       <div class="event-media-wrap reveal-right">
         <div class="event-media-inner" style="background: linear-gradient(135deg, #15803d, #14532d 60%);">
           <div class="event-media-frame">
-            <img class="event-media" src="attached_assets/Case-Quest-2-_1756909440874.jpg"
+            <img class="event-media" src="/attached_assets/Case Quest (2)_1756909440874.jpg"
                  onerror="this.src='https://placehold.co/600x400/002244/FFFFFF?text=Event+Image'"
                  alt="Case Quest Competition" />
           </div>
@@ -297,11 +297,11 @@
     <p class="sub">Get the official guides to dominate the competition</p>
     <div class="resource-grid">
       <a href="https://drive.google.com/file/d/1zSKKnzipqPjH6NxaWREoGSYSTklgjxUR/view" target="_blank" rel="noopener noreferrer" class="resource-card">
-        <img src="attached_assets/RuleBook FP.png" alt="Rule Book Cover" onerror="this.src='https://placehold.co/620x876/00204E/FFFFFF?text=Rule+Book'">
+        <img src="/attached_assets/RuleBook FP.png" alt="Rule Book Cover" onerror="this.src='https://placehold.co/620x876/00204E/FFFFFF?text=Rule+Book'">
         <div class="resource-overlay"><span>👁 View</span></div>
       </a>
       <a href="https://drive.google.com/file/d/1AWRdSFiy4uhH6u7xe3Rd6bBq6wxAmDyo/view" target="_blank" rel="noopener noreferrer" class="resource-card">
-        <img src="attached_assets/Brochure FP.png" alt="Brochure Cover" onerror="this.src='https://placehold.co/620x876/E30613/FFFFFF?text=Brochure'">
+        <img src="/attached_assets/Brochure FP.png" alt="Brochure Cover" onerror="this.src='https://placehold.co/620x876/E30613/FFFFFF?text=Brochure'">
         <div class="resource-overlay"><span>👁 View</span></div>
       </a>
     </div>
@@ -310,8 +310,8 @@
 
 <!-- FINAL SHOWDOWN -->
 <div style="padding: 0.5rem 1rem; background:#fff;">
-  <section class="dark-feature-section final-showdown-card reveal" id="final-showdown">
-    <div data-stars="35"></div>
+  <section class="dark-feature-section final-showdown-card reveal" id="final-showdown" style="position:relative;">
+    <canvas class="particle-canvas" data-particles="140" data-particle-colors="255,255,255|96,165,250|59,130,246"></canvas>
     <div class="container-inner">
       <div style="text-align:center;">
         <div class="trophy-badge">🏆 CHAMPIONSHIP FINALE 🏆</div>
@@ -334,7 +334,7 @@
 
 <!-- PANEL DISCUSSION -->
 <div style="padding: 0.5rem 1rem; background:#fff;">
-  <section class="dark-feature-section panel-card reveal" id="panel-discussion-section">
+  <section class="dark-feature-section panel-card reveal" id="panel-discussion-section" data-hover-repel style="position:relative;">
     <div data-vlines="60"></div>
     <div data-waves="40"></div>
     <div data-mics="12"></div>
@@ -437,6 +437,6 @@
   <div class="footer-bottom">© 2026 STRATEGIA. All rights reserved.</div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>
