@@ -7,10 +7,10 @@
 <meta name="description" content="Four specialized competitions testing different aspects of business strategy, leading to the ultimate championship finale." />
 <link rel="stylesheet" href="css/style.css" />
 <style>
-  /* ---------- Page-specific styles ---------- */
+  /* ---------- Hero ---------- */
   .hero-events {
     position: relative;
-    min-height: 60vh;
+    min-height: 65vh;
     background: #000;
     color: #fff;
     overflow: hidden;
@@ -23,32 +23,35 @@
     width: 100%; height: 100%;
     object-fit: cover;
   }
-  .hero-fallback-bg {
-    background: radial-gradient(circle at 30% 20%, var(--strategia-blue), var(--strategia-navy) 60%);
-  }
-  .hero-events .overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(120deg, rgba(0,32,78,0.55), rgba(227,6,19,0.35));
-  }
-  .hero-events .overlay-dark { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
+  .hero-fallback-bg { background: radial-gradient(circle at 30% 20%, var(--strategia-blue), var(--strategia-navy) 60%); }
+  .hero-events .overlay-dark { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+  .hero-events .overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,32,78,0.4), rgba(30,58,138,0.3), rgba(227,6,19,0.4)); }
   .hero-events-content { position: relative; z-index: 5; width: 100%; padding-bottom: 3rem; }
 
   .scroll-hint {
     position: absolute; bottom: 2rem; right: 2rem; z-index: 10;
-    width: 3.2rem; height: 3.2rem; border-radius: 50%;
+    width: 3.5rem; height: 3.5rem; border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.8);
     display: flex; align-items: center; justify-content: center;
-    animation: fadeIn 1s ease 1.2s both;
+  }
+  .scroll-hint::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.6);
+    animation: ringPulse 2s ease-in-out infinite;
   }
   .scroll-hint svg { animation: bob 1.5s ease-in-out infinite; }
   @keyframes bob { 0%,100% { transform: translateY(0);} 50% { transform: translateY(4px);} }
-  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes ringPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.25); opacity: 0; } }
 
-  .events-intro { padding: 4rem 0 2rem; background: linear-gradient(160deg, rgba(0,32,78,0.04), #eff6ff 60%, rgba(254,242,242,0.4)); position: relative; }
-  .intro-heading { text-align: center; font-size: clamp(1.6rem, 4vw, 3rem); margin-bottom: 1rem; }
-  .intro-sub { text-align: center; max-width: 640px; margin: 0 auto 2.5rem; color: var(--strategia-gray-dark); font-size: 1.05rem; }
+  /* ---------- Intro / prize cards ---------- */
+  .events-intro { padding: 4rem 0 2rem; background: linear-gradient(160deg, rgba(0,32,78,0.05), #eff6ff 55%, rgba(254,242,242,0.35)); position: relative; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.35; pointer-events: none; }
+  .blob-1 { width: 24rem; height: 24rem; top: 3rem; left: -4rem; background: radial-gradient(circle, rgba(0,32,78,0.3), transparent 70%); }
+  .blob-2 { width: 24rem; height: 24rem; bottom: 3rem; right: -4rem; background: radial-gradient(circle, rgba(227,6,19,0.25), transparent 70%); }
+  .intro-heading { text-align: center; font-size: clamp(1.6rem, 4vw, 3rem); margin-bottom: 1rem; position: relative; }
+  .intro-sub { text-align: center; max-width: 640px; margin: 0 auto 2.5rem; color: var(--strategia-gray-dark); font-size: 1.05rem; position: relative; }
 
-  .prize-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2.5rem; }
+  .prize-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2.5rem; position: relative; }
   @media (max-width: 640px) { .prize-cards { grid-template-columns: 1fr; } }
   .prize-card { border-radius: 1.1rem; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border: 2px solid; gap: 1rem; flex-wrap: wrap; }
   .prize-card.amber { background: linear-gradient(90deg, rgba(245,158,11,0.08), rgba(254,243,199,0.85)); border-color: rgba(245,158,11,0.3); }
@@ -66,9 +69,10 @@
   .prize-card.yellow .prize-value { color: #a16207; }
   .prize-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; }
 
-  .competitions-heading { text-align: center; margin: 3rem 0 3rem; font-size: clamp(1.5rem, 4vw, 2.75rem); }
+  .competitions-heading { text-align: center; margin: 1rem 0 3rem; font-size: clamp(1.5rem, 4vw, 2.75rem); position: relative; }
 
-  .event-row { display: flex; align-items: center; gap: 3rem; margin-bottom: 4.5rem; }
+  /* ---------- Event rows ---------- */
+  .event-row { display: flex; align-items: center; gap: 3rem; margin-bottom: 4.5rem; position: relative; }
   .event-row.reverse { flex-direction: row-reverse; }
   @media (max-width: 960px) { .event-row, .event-row.reverse { flex-direction: column; gap: 1.75rem; } }
   .event-media-wrap { flex: 1 1 50%; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
@@ -84,47 +88,25 @@
   .event-num { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; color: rgba(0,32,78,0.15); }
   .event-num-bar { width: 4px; height: 2.5rem; background: linear-gradient(180deg, var(--strategia-navy), var(--strategia-blue)); border-radius: 4px; }
   .event-copy h3 { font-size: clamp(1.3rem, 3vw, 2.2rem); margin: 0 0 0.75rem; color: var(--strategia-navy); }
-  .event-copy p.desc { color: var(--strategia-gray-dark); line-height: 1.6; margin-bottom: 1rem; }
-  .event-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
-  .event-row.reverse .event-tags { justify-content: flex-end; }
-  @media (max-width: 960px) { .event-row.reverse .event-tags { justify-content: flex-start; } }
-  .event-tag { font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.7rem; border-radius: 999px; background: rgba(0,32,78,0.07); color: var(--strategia-navy); }
-  .event-meta-row { display: flex; gap: 1.5rem; margin-bottom: 1.25rem; font-size: 0.85rem; color: #6b7280; }
-  .event-row.reverse .event-meta-row { justify-content: flex-end; }
-  @media (max-width: 960px) { .event-row.reverse .event-meta-row { justify-content: flex-start; } }
-  .event-meta-row strong { color: var(--strategia-navy); }
-
-  .final-showdown {
-    position: relative; overflow: hidden; padding: 5rem 0;
-    background: linear-gradient(135deg, #3b0764, var(--strategia-navy) 55%, #1e1b4b);
-    color: #fff;
+  .event-copy p.desc { color: var(--strategia-gray-dark); line-height: 1.6; margin-bottom: 1.25rem; }
+  .event-row.reverse .prize-pill-row { display: flex; justify-content: flex-end; }
+  @media (max-width: 960px) { .event-row.reverse .prize-pill-row { justify-content: flex-start; } }
+  .prize-pill {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: linear-gradient(90deg, rgba(251,191,36,0.12), rgba(255,237,213,0.9));
+    border: 1px solid rgba(251,191,36,0.4);
+    border-radius: 0.75rem; padding: 0.6rem 1.1rem;
+    margin-bottom: 1.25rem; box-shadow: 0 6px 16px rgba(0,0,0,0.06);
   }
-  .final-showdown .container { position: relative; z-index: 5; }
-  .final-badge { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
-  .final-badge .num { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: rgba(255,255,255,0.15); }
-  .final-showdown h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0 0 1rem; }
-  .final-showdown p.desc { color: rgba(255,255,255,0.8); max-width: 42rem; line-height: 1.7; margin-bottom: 1.5rem; }
-  .final-stats { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
-  .final-stat .prize-value { color: #fbbf24; }
-  .final-stat .prize-label { color: rgba(255,255,255,0.6); }
+  .prize-pill .dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: linear-gradient(90deg,#fbbf24,#fb923c); animation: dotPulse 1.6s ease-in-out infinite; }
+  @keyframes dotPulse { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+  .prize-pill .lbl { font-size: 0.85rem; color: #4b5563; font-weight: 500; }
+  .prize-pill .amt { font-size: 1.25rem; font-weight: 800; background: linear-gradient(90deg,#d97706,#ea580c); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-  .startup-panel-section { position: relative; overflow: hidden; padding: 5rem 0; color: #fff; }
-  .startup-panel-section.panel { background: linear-gradient(135deg, #7f1d1d, var(--strategia-navy) 60%); }
-  .startup-panel-section.expo { background: linear-gradient(135deg, var(--strategia-navy), #1e3a8a 60%); }
-  .sp-grid { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
-  .sp-left { flex: 1 1 38%; min-width: 260px; }
-  .sp-left h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0.75rem 0 0; }
-  .sp-right { flex: 1 1 55%; min-width: 280px; }
-  .sp-right p.desc { color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 1.25rem; }
-  .sp-highlights { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 0.75rem; padding: 1rem 1.1rem; margin-bottom: 1.25rem; }
-  .sp-highlights h4 { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #93c5fd; }
-  .sp-highlights ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.4rem; font-size: 0.85rem; color: rgba(255,255,255,0.85); }
-  .sp-highlights li::before { content: "›"; margin-right: 0.4rem; color: #60a5fa; font-weight: 800; }
-  .sp-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
-  .sp-feature { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.6rem; padding: 1rem 0.5rem; text-align: center; transition: transform 0.25s, background 0.25s; }
-  .sp-feature:hover { transform: translateY(-4px); background: rgba(255,255,255,0.12); }
-  .sp-feature svg { margin: 0 auto 0.4rem; }
-  .sp-feature span { font-size: 0.8rem; font-weight: 700; }
+  /* ---------- Resources / downloads ---------- */
+  .resources-section { padding: 3.5rem 0; background: #f9fafb; }
+  .resources-section h2 { text-align: center; font-size: clamp(1.4rem, 3.5vw, 2.4rem); margin-bottom: 0.6rem; }
+  .resources-section .sub { text-align: center; color: #6b7280; margin-bottom: 2.5rem; }
 </style>
 </head>
 <body>
@@ -166,8 +148,10 @@
   </div>
 </header>
 
-<!-- INTRO / PRIZE POOL -->
+<!-- INTRO / PRIZE POOL / MAIN COMPETITIONS -->
 <section class="events-intro" id="main-events">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
   <div class="container">
     <h2 class="intro-heading dm-sans-bold gradient-text reveal">Ready to win big?</h2>
 
@@ -210,7 +194,7 @@
         <div class="event-media-inner">
           <div class="event-media-frame">
             <img class="event-media" src="attached_assets/StrategIQ_1756909440871.png"
-                 onerror="this.src='https://placehold.co/600x450/00204E/FFFFFF?text=StrategIQ'"
+                 onerror="this.src='https://placehold.co/600x400/002244/FFFFFF?text=Event+Image'"
                  alt="StrategIQ Competition" />
           </div>
         </div>
@@ -222,17 +206,10 @@
         </div>
         <h3 class="dm-sans-bold">StrategIQ</h3>
         <p class="desc">The ultimate business and finance quiz where intellect meets speed and strategy.</p>
-        <div class="event-tags">
-          <span class="event-tag">Strategic Analysis</span>
-          <span class="event-tag">Problem Solving</span>
-          <span class="event-tag">Decision Making</span>
-          <span class="event-tag">Presentation</span>
+        <div class="prize-pill-row">
+          <div class="prize-pill"><span class="dot"></span><span class="lbl">Prize Pool:</span><span class="amt">₹50,000</span></div>
         </div>
-        <div class="event-meta-row">
-          <span><strong>₹50,000</strong> prize pool</span>
-          <span><strong>₹300</strong> entry fee</span>
-        </div>
-        <a href="events-detail.html?id=strategiq" class="btn-primary">Register Now →</a>
+        <a href="events-detail.html?id=strategiq" class="btn-primary">Learn More →</a>
       </div>
     </div>
 
@@ -242,7 +219,7 @@
         <div class="event-media-inner" style="background: linear-gradient(135deg, var(--strategia-red), #b91c1c 60%);">
           <div class="event-media-frame">
             <img class="event-media" src="attached_assets/Market Masters_1756909440872.jpg"
-                 onerror="this.src='https://placehold.co/600x450/E30613/FFFFFF?text=Market+Masters'"
+                 onerror="this.src='https://placehold.co/600x400/002244/FFFFFF?text=Event+Image'"
                  alt="Market Masters Competition" />
           </div>
         </div>
@@ -254,17 +231,10 @@
         </div>
         <h3 class="dm-sans-bold">Market Masters</h3>
         <p class="desc">Test your market acumen through live trading and portfolio strategy presentations.</p>
-        <div class="event-tags">
-          <span class="event-tag">Investment Analysis</span>
-          <span class="event-tag">Risk Management</span>
-          <span class="event-tag">Market Research</span>
-          <span class="event-tag">Financial Modeling</span>
+        <div class="prize-pill-row">
+          <div class="prize-pill"><span class="dot"></span><span class="lbl">Prize Pool:</span><span class="amt">₹50,000</span></div>
         </div>
-        <div class="event-meta-row">
-          <span><strong>₹50,000</strong> prize pool</span>
-          <span><strong>₹300</strong> entry fee</span>
-        </div>
-        <a href="events-detail.html?id=market-masters" class="btn-primary">Register Now →</a>
+        <a href="events-detail.html?id=market-masters" class="btn-primary">Learn More →</a>
       </div>
     </div>
 
@@ -274,7 +244,7 @@
         <div class="event-media-inner" style="background: linear-gradient(135deg, #1f2937, #111827 60%);">
           <div class="event-media-frame">
             <img class="event-media" src="attached_assets/VentureX_1756909440869.png"
-                 onerror="this.src='https://placehold.co/600x450/1f2937/FFFFFF?text=VentureX'"
+                 onerror="this.src='https://placehold.co/600x400/002244/FFFFFF?text=Event+Image'"
                  alt="VentureX Competition" />
           </div>
         </div>
@@ -286,17 +256,10 @@
         </div>
         <h3 class="dm-sans-bold">VentureX</h3>
         <p class="desc">Pitch bold ideas in a high-stakes arena of innovation.</p>
-        <div class="event-tags">
-          <span class="event-tag">Leadership</span>
-          <span class="event-tag">Crisis Management</span>
-          <span class="event-tag">Negotiation</span>
-          <span class="event-tag">Executive Communication</span>
+        <div class="prize-pill-row">
+          <div class="prize-pill"><span class="dot"></span><span class="lbl">Prize Pool:</span><span class="amt">₹50,000</span></div>
         </div>
-        <div class="event-meta-row">
-          <span><strong>₹50,000</strong> prize pool</span>
-          <span><strong>₹300</strong> entry fee</span>
-        </div>
-        <a href="events-detail.html?id=venturex" class="btn-primary">Register Now →</a>
+        <a href="events-detail.html?id=venturex" class="btn-primary">Learn More →</a>
       </div>
     </div>
 
@@ -306,7 +269,7 @@
         <div class="event-media-inner" style="background: linear-gradient(135deg, #15803d, #14532d 60%);">
           <div class="event-media-frame">
             <img class="event-media" src="attached_assets/Case Quest (2)_1756909440874.jpg"
-                 onerror="this.src='https://placehold.co/600x450/15803d/FFFFFF?text=Case+Quest'"
+                 onerror="this.src='https://placehold.co/600x400/002244/FFFFFF?text=Event+Image'"
                  alt="Case Quest Competition" />
           </div>
         </div>
@@ -318,112 +281,137 @@
         </div>
         <h3 class="dm-sans-bold">Case Quest</h3>
         <p class="desc">A consulting challenge to crack real-world business problems with sharp solutions.</p>
-        <div class="event-tags">
-          <span class="event-tag">Case Analysis</span>
-          <span class="event-tag">Strategic Thinking</span>
-          <span class="event-tag">Solution Design</span>
-          <span class="event-tag">Critical Reasoning</span>
+        <div class="prize-pill-row">
+          <div class="prize-pill"><span class="dot"></span><span class="lbl">Prize Pool:</span><span class="amt">₹50,000</span></div>
         </div>
-        <div class="event-meta-row">
-          <span><strong>₹50,000</strong> prize pool</span>
-          <span><strong>₹300</strong> entry fee</span>
-        </div>
-        <a href="events-detail.html?id=case-quest" class="btn-primary">Register Now →</a>
+        <a href="events-detail.html?id=case-quest" class="btn-primary">Learn More →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION RESOURCES -->
+<section class="resources-section reveal">
+  <div class="container">
+    <h2 class="dm-sans-bold gradient-text">Competition Resources</h2>
+    <p class="sub">Get the official guides to dominate the competition</p>
+    <div class="resource-grid">
+      <a href="https://drive.google.com/file/d/1zSKKnzipqPjH6NxaWREoGSYSTklgjxUR/view" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <img src="attached_assets/RuleBook FP.png" alt="Rule Book Cover" onerror="this.src='https://placehold.co/620x876/00204E/FFFFFF?text=Rule+Book'">
+        <div class="resource-overlay"><span>👁 View</span></div>
+      </a>
+      <a href="https://drive.google.com/file/d/1AWRdSFiy4uhH6u7xe3Rd6bBq6wxAmDyo/view" target="_blank" rel="noopener noreferrer" class="resource-card">
+        <img src="attached_assets/Brochure FP.png" alt="Brochure Cover" onerror="this.src='https://placehold.co/620x876/E30613/FFFFFF?text=Brochure'">
+        <div class="resource-overlay"><span>👁 View</span></div>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- FINAL SHOWDOWN -->
-<section class="final-showdown" id="final-showdown">
-  <div data-stars="45"></div>
-  <div class="container reveal">
-    <div class="final-badge">
-      <div class="num dm-sans-bold">05</div>
-      <div>
-        <span class="eyebrow-pill">🏆 Championship Finale</span>
-        <h2 class="dm-sans-bold">Final Showdown</h2>
+<div style="padding: 0.5rem 1rem; background:#fff;">
+  <section class="dark-feature-section final-showdown-card reveal" id="final-showdown">
+    <div data-stars="35"></div>
+    <div class="container-inner">
+      <div style="text-align:center;">
+        <div class="trophy-badge">🏆 CHAMPIONSHIP FINALE 🏆</div>
       </div>
-    </div>
-    <p class="desc">The ultimate finale where winners from the four main competitions compete for the championship title.</p>
-    <div class="final-stats">
-      <div class="final-stat">
-        <div class="prize-value dm-sans-bold" data-count-to="100000" data-count-from="90000" data-count-duration="1200" data-count-prefix="₹">₹90,000</div>
-        <div class="prize-label">Winner Takes All</div>
-      </div>
-      <div class="final-stat">
-        <div class="prize-value dm-sans-bold">4</div>
-        <div class="prize-label">Championship Rounds</div>
-      </div>
-    </div>
-    <div class="event-tags">
-      <span class="event-tag" style="background:rgba(255,255,255,0.1);color:#fff;">Strategic Excellence</span>
-      <span class="event-tag" style="background:rgba(255,255,255,0.1);color:#fff;">Leadership</span>
-      <span class="event-tag" style="background:rgba(255,255,255,0.1);color:#fff;">Championship Performance</span>
-      <span class="event-tag" style="background:rgba(255,255,255,0.1);color:#fff;">Elite Competition</span>
-    </div>
-  </div>
-</section>
+      <h2 class="final-title dm-sans-bold">Final Showdown</h2>
+      <p class="final-desc">The ultimate finale where only the winners from the four main competitions compete for supremacy and the championship title</p>
 
-<!-- PANEL DISCUSSION TEASER -->
-<section class="startup-panel-section panel reveal" id="panel-discussion-section">
-  <div data-stars="25"></div>
-  <div class="container sp-grid">
-    <div class="sp-left">
-      <span class="eyebrow-pill">🎙 Insights</span>
-      <h2 class="dm-sans-bold">Panel Discussion</h2>
-    </div>
-    <div class="sp-right">
-      <p class="desc">Hear from industry leaders and strategists on the future of business, markets, and innovation in an interactive fireside conversation.</p>
-      <div class="sp-highlights">
-        <h4>Session Highlights</h4>
-        <ul>
-          <li>Real-world strategy case studies from top leaders</li>
-          <li>Open Q&A with industry veterans</li>
-          <li>Networking with speakers post-session</li>
-        </ul>
+      <div class="final-prize-box">
+        <div class="final-prize-label">Championship Prize Pool</div>
+        <div class="final-prize-value dm-sans-bold">₹1,00,000</div>
+        <div class="final-prize-sub">The ultimate prize for the ultimate champions</div>
       </div>
-      <a href="events.html#panel-discussion-section" class="btn-white">Learn More →</a>
-    </div>
-  </div>
-</section>
 
-<!-- STARTUP EXPO TEASER -->
-<section class="startup-panel-section expo reveal" id="startup-expo-section">
-  <div data-stars="35"></div>
-  <div class="container sp-grid">
-    <div class="sp-left">
-      <span class="eyebrow-pill">🚀 Innovation</span>
-      <h2 class="dm-sans-bold">Startup Expo</h2>
-    </div>
-    <div class="sp-right">
-      <p class="desc">Showcase your startup, connect with investors, and explore cutting-edge innovations. A platform for entrepreneurs to pitch, network, and collaborate.</p>
-      <div class="sp-highlights">
-        <h4>Expo Highlights</h4>
-        <ul>
-          <li>Pitch your startup to investors</li>
-          <li>Exclusive mentorship sessions</li>
-          <li>Innovation showcase &amp; demo booths</li>
-        </ul>
+      <div class="final-cta-row">
+        <a href="events-detail.html?id=final-showdown" class="btn-white-cta">Learn More <span class="arrow">→</span></a>
       </div>
-      <div class="sp-features">
-        <div class="sp-feature">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path></svg>
-          <span>Launch</span>
-        </div>
-        <div class="sp-feature">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-          <span>Invest</span>
-        </div>
-        <div class="sp-feature">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <span>Partner</span>
-        </div>
-      </div>
-      <a href="events.html#startup-expo-section" class="btn-white">Learn More →</a>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+
+<!-- PANEL DISCUSSION -->
+<div style="padding: 0.5rem 1rem; background:#fff;">
+  <section class="dark-feature-section panel-card reveal" id="panel-discussion-section">
+    <div data-vlines="60"></div>
+    <div data-waves="40"></div>
+    <div data-mics="12"></div>
+    <div class="container-inner dfs-flex">
+      <div class="dfs-left">
+        <div class="pill-badge">🎙 Featured</div>
+        <h2 class="dm-sans-bold">Guesstimate + Panel Discussion</h2>
+      </div>
+      <div class="dfs-right">
+        <p class="desc">Industry leaders share insights on strategy, innovation, and entrepreneurship. Network with top executives and gain valuable perspectives on business growth.</p>
+        <div class="highlight-box" style="color:#facc15;">
+          <h4>✨ What You'll Gain</h4>
+          <ul>
+            <li>Direct Q&amp;A with industry veterans</li>
+            <li>Real-world business case studies</li>
+            <li>Networking with like-minded entrepreneurs</li>
+          </ul>
+        </div>
+        <div class="feature-grid3">
+          <div class="feature-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Expert Panelists</span>
+          </div>
+          <div class="feature-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path><circle cx="12" cy="12" r="4"></circle></svg>
+            <span>Insights</span>
+          </div>
+          <div class="feature-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Network</span>
+          </div>
+        </div>
+        <a href="panel-discussion.html" class="btn-white-cta">View Full Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- STARTUP EXPO -->
+<div style="padding: 0.5rem 1rem; background:#fff;">
+  <section class="dark-feature-section expo-card reveal" id="startup-expo-section">
+    <div data-rockets="12"></div>
+    <div data-stars="50"></div>
+    <div class="container-inner dfs-flex">
+      <div class="dfs-left">
+        <div class="pill-badge">🚀 Innovation</div>
+        <h2 class="dm-sans-bold">Startup Expo</h2>
+      </div>
+      <div class="dfs-right">
+        <p class="desc">Showcase your startup, connect with investors, and explore cutting-edge innovations. A platform for entrepreneurs to pitch, network, and collaborate.</p>
+        <div class="highlight-box" style="color:#60a5fa;">
+          <h4>⚡ Expo Highlights</h4>
+          <ul>
+            <li>Pitch your startup to investors</li>
+            <li>Exclusive mentorship sessions</li>
+            <li>Innovation showcase &amp; demo booths</li>
+          </ul>
+        </div>
+        <div class="feature-grid3">
+          <div class="feature-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
+            <span>Launch</span>
+          </div>
+          <div class="feature-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <span>Invest</span>
+          </div>
+          <div class="feature-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Partner</span>
+          </div>
+        </div>
+        <a href="startup-expo.html" class="btn-white-cta">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path></svg></a>
+      </div>
+    </div>
+  </section>
+</div>
 
 <footer class="site-footer">
   <div class="footer-inner">
