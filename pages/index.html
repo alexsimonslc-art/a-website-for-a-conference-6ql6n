@@ -1,31 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="theme-color" content="#00204E" />
-    <link rel="icon" type="image/png" href="/attached_assets/Domain Logo_1757334218512.png" />
-    <link rel="apple-touch-icon" href="/attached_assets/Domain Logo_1757334218512.png" />
-    <title>STRATEGIA'26 - Business Strategy Challenge</title>
-    <meta name="description" content="Join STRATEGIA 2026, The Ultimate Business Strategy Challenge presented by the Department of B.Com (Honours) Loyola College, Chennai. Showcase your talent, compete with sharp minds, and register online!" />
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W38XVTJ1Q5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STRATEGIA'26 - Business Strategy Challenge</title>
+<meta name="description" content="Join STRATEGIA 2026, The Ultimate Business Strategy Challenge presented by the Department of B.Com (Honours) Loyola College, Chennai." />
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  .hero-home {
+    position: relative; min-height: 92vh; display: flex; align-items: center;
+    color: #fff; overflow: hidden;
+    background: linear-gradient(135deg, var(--strategia-navy) 0%, #0f2e5c 45%, var(--strategia-red) 140%);
+  }
+  .hero-home::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 15% 20%, rgba(255,255,255,0.12), transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(227,6,19,0.25), transparent 50%);
+  }
+  .hero-home-content { position: relative; z-index: 3; text-align: center; width: 100%; padding-top: 5rem; }
+  .hero-eyebrow { margin-bottom: 1.25rem; }
+  .hero-home h1 { font-size: clamp(2.4rem, 7vw, 5.2rem); line-height: 1.02; margin: 0 0 1rem; }
+  .hero-home h1 span { color: #ffd166; }
+  .hero-home p { max-width: 34rem; margin: 0 auto 2.25rem; color: rgba(255,255,255,0.85); font-size: 1.1rem; }
+  .hero-btn-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 3.5rem; flex-wrap: wrap; }
+  .hero-stat { text-align: center; }
+  .hero-stat .val { font-size: 2.2rem; font-weight: 900; font-family: "Orbitron", sans-serif; color: #ffd166; }
+  .hero-stat .lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); }
 
-      gtag('config', 'G-W38XVTJ1Q5');
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
+  .about-strip { padding: 4.5rem 0; text-align: center; }
+  .about-strip h2 { font-size: clamp(1.6rem, 4vw, 2.6rem); margin-bottom: 1rem; }
+  .about-strip p { max-width: 42rem; margin: 0 auto; color: var(--strategia-gray-dark); line-height: 1.7; }
+
+  .events-preview { padding: 4rem 0 5rem; background: linear-gradient(160deg, #eff6ff, #fff 60%); }
+  .events-preview h2 { text-align: center; font-size: clamp(1.6rem, 4vw, 2.6rem); margin-bottom: 3rem; }
+  .event-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  @media (max-width: 960px) { .event-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .event-grid { grid-template-columns: 1fr; } }
+  .event-card-mini { border-radius: 1rem; overflow: hidden; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.07); transition: transform 0.3s, box-shadow 0.3s; }
+  .event-card-mini:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+  .event-card-mini .thumb { aspect-ratio: 4/3; background-size: cover; background-position: center; position: relative; }
+  .event-card-mini .thumb .badge { position: absolute; top: 0.6rem; left: 0.6rem; background: rgba(0,0,0,0.55); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 999px; }
+  .event-card-mini .body { padding: 1rem 1.1rem 1.25rem; }
+  .event-card-mini h4 { margin: 0 0 0.4rem; font-size: 1rem; }
+  .event-card-mini p { margin: 0 0 0.75rem; font-size: 0.82rem; color: #6b7280; line-height: 1.5; }
+  .event-card-mini .fee { font-size: 0.78rem; font-weight: 700; color: var(--strategia-red); }
+  .view-all-row { text-align: center; margin-top: 2.5rem; }
+
+  .cta-band { background: var(--strategia-navy); color: #fff; padding: 4rem 0; text-align: center; }
+  .cta-band h2 { font-size: clamp(1.5rem, 4vw, 2.4rem); margin-bottom: 1rem; }
+  .cta-band p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">STRATEGIA<span>'26</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#sponsors">Sponsors</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="nav-cta">Register</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero-home">
+  <div class="hero-home-content container">
+    <div class="hero-eyebrow"><span class="eyebrow-pill">📅 Loyola College, Chennai · 2026</span></div>
+    <h1 class="dm-sans-bold">STRATEGIA<span>'26</span></h1>
+    <p>The Ultimate Business Strategy Challenge — presented by the Department of B.Com (Honours). Compete with sharp minds across four arenas of strategy.</p>
+    <div class="hero-btn-row">
+      <a href="events.html" class="btn-primary">Explore Events →</a>
+      <a href="#" class="btn-white">Register Now</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="val" data-count-to="5" data-count-duration="1000">0</div><div class="lbl">Competitions</div></div>
+      <div class="hero-stat"><div class="val" data-count-to="298000" data-count-duration="1600" data-count-prefix="₹">₹0</div><div class="lbl">Prize Pool</div></div>
+      <div class="hero-stat"><div class="val" data-count-to="500" data-count-duration="1400" data-count-prefix="">0</div><div class="lbl">+ Participants</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="about-strip reveal">
+  <div class="container">
+    <h2 class="dm-sans-bold gradient-text">Where strategy meets ambition</h2>
+    <p>STRATEGIA'26 brings together the sharpest minds in business to compete across quizzing, trading, pitching, and consulting — culminating in a championship Final Showdown for the title.</p>
+  </div>
+</section>
+
+<section class="events-preview">
+  <div class="container">
+    <h2 class="dm-sans-bold gradient-text reveal">This year's competitions</h2>
+    <div class="event-grid">
+      <a href="events.html#main-events" class="event-card-mini reveal">
+        <div class="thumb" style="background-image:url('attached_assets/StrategIQ_1756909440871.png'), linear-gradient(135deg, var(--strategia-navy), #1d4ed8);" onerror="">
+          <span class="badge">01</span>
+        </div>
+        <div class="body">
+          <h4 class="dm-sans-bold">StrategIQ</h4>
+          <p>The ultimate business &amp; finance quiz of intellect and speed.</p>
+          <span class="fee">₹50,000 prize · ₹300 entry</span>
+        </div>
+      </a>
+      <a href="events.html#main-events" class="event-card-mini reveal">
+        <div class="thumb" style="background-image:url('attached_assets/Market Masters_1756909440872.jpg'), linear-gradient(135deg, var(--strategia-red), #b91c1c);">
+          <span class="badge">02</span>
+        </div>
+        <div class="body">
+          <h4 class="dm-sans-bold">Market Masters</h4>
+          <p>Live trading &amp; portfolio strategy under pressure.</p>
+          <span class="fee">₹50,000 prize · ₹300 entry</span>
+        </div>
+      </a>
+      <a href="events.html#main-events" class="event-card-mini reveal">
+        <div class="thumb" style="background-image:url('attached_assets/VentureX_1756909440869.png'), linear-gradient(135deg, #1f2937, #111827);">
+          <span class="badge">03</span>
+        </div>
+        <div class="body">
+          <h4 class="dm-sans-bold">VentureX</h4>
+          <p>Pitch bold ideas in a high-stakes arena of innovation.</p>
+          <span class="fee">₹50,000 prize · ₹300 entry</span>
+        </div>
+      </a>
+      <a href="events.html#main-events" class="event-card-mini reveal">
+        <div class="thumb" style="background-image:url('attached_assets/Case Quest (2)_1756909440874.jpg'), linear-gradient(135deg, #15803d, #14532d);">
+          <span class="badge">04</span>
+        </div>
+        <div class="body">
+          <h4 class="dm-sans-bold">Case Quest</h4>
+          <p>Crack real-world business problems with sharp solutions.</p>
+          <span class="fee">₹50,000 prize · ₹300 entry</span>
+        </div>
+      </a>
+    </div>
+    <div class="view-all-row reveal">
+      <a href="events.html" class="btn-primary">View All Events →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band reveal" id="contact">
+  <div class="container">
+    <h2 class="dm-sans-bold">Ready to compete?</h2>
+    <p>Registrations for STRATEGIA'26 are now open. Secure your spot in the ultimate business strategy challenge.</p>
+    <a href="#" class="btn-primary">Register Your Team →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">STRATEGIA'26</div>
+      <p style="max-width:20rem;font-size:0.85rem;">The Ultimate Business Strategy Challenge, presented by the Department of B.Com (Honours), Loyola College, Chennai.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="#schedule">Schedule</a>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#sponsors">Sponsors</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Rules &amp; Regulations</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 STRATEGIA. All rights reserved.</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
 </html>
