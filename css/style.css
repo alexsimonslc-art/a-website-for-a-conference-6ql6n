@@ -180,3 +180,85 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .event-media { filter: grayscale(1); transition: filter 0.7s ease, transform 0.7s ease; }
 .event-media.in-view { filter: grayscale(0); }
 .event-media-wrap:hover .event-media { transform: scale(1.08); }
+
+/* ---------- Falling lines (panel discussion bg) ---------- */
+[data-vlines] { position: absolute; inset: 0; overflow: hidden; opacity: 0.3; pointer-events: none; }
+.vline { position: absolute; width: 2px; background: linear-gradient(180deg, transparent, var(--strategia-accent-blue), transparent); animation: vlineMove 3s ease-in-out infinite; }
+@keyframes vlineMove { 0%,100% { opacity: 0.2; transform: scaleY(0.85); } 50% { opacity: 0.8; transform: scaleY(1.15); } }
+
+/* ---------- Floating mics ---------- */
+[data-mics] { position: absolute; inset: 0; pointer-events: none; }
+.float-mic { position: absolute; animation: micFloat 3.5s ease-in-out infinite; filter: drop-shadow(0 0 8px rgba(96,165,250,0.5)); color: #93c5fd; }
+@keyframes micFloat { 0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.3; } 50% { transform: translateY(-15px) rotate(5deg); opacity: 0.7; } }
+
+/* ---------- Sound wave bars ---------- */
+[data-waves] { position: absolute; inset: 0; pointer-events: none; }
+.wave-bar { position: absolute; width: 5px; border-radius: 999px; background: linear-gradient(180deg, var(--strategia-accent-blue), transparent); animation: waveBob 2.2s ease-in-out infinite; }
+@keyframes waveBob { 0%,100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(-10px); opacity: 0.85; } }
+
+/* ---------- Flying rockets ---------- */
+[data-rockets] { position: absolute; inset: 0; overflow: hidden; opacity: 0.3; pointer-events: none; }
+.rocket-fly { position: absolute; bottom: -10%; animation: rocketUp linear infinite; color: var(--strategia-accent-blue); }
+@keyframes rocketUp { 0% { transform: translate(0,0) rotate(-40deg); } 100% { transform: translate(-80px,-1200px) rotate(-40deg); } }
+
+/* ---------- Dark feature sections (Final Showdown / Panel / Expo) ---------- */
+.dark-feature-section { position: relative; overflow: hidden; border-radius: 2rem; box-shadow: 0 25px 60px rgba(0,0,0,0.35); color: #fff; padding: 3rem 2rem; margin: 0 auto 3rem; max-width: 1120px; }
+.dark-feature-section .container-inner { position: relative; z-index: 5; max-width: 1120px; margin: 0 auto; }
+.pill-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.45rem 1.1rem; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.1rem; animation: badgePulse 2s ease-in-out infinite; }
+@keyframes badgePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+.dfs-flex { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.dfs-left { flex: 1 1 38%; min-width: 260px; }
+.dfs-left h2 { font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 1.05; margin: 0; background: linear-gradient(135deg, #fff, #dbeafe, var(--strategia-accent-blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.dfs-right { flex: 1 1 55%; min-width: 280px; }
+.dfs-right > p.desc { color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0 0 1.25rem; }
+
+.highlight-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.6rem; padding: 0.9rem 1rem; margin-bottom: 1.25rem; }
+.highlight-box h4 { margin: 0 0 0.55rem; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: center; gap: 0.3rem; }
+.highlight-box ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; font-size: 0.82rem; color: rgba(255,255,255,0.85); }
+.highlight-box li::before { content: "›"; margin-right: 0.35rem; color: var(--strategia-accent-blue); font-weight: 800; }
+
+.feature-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+.feature-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.6rem; padding: 1rem 0.5rem; text-align: center; transition: transform 0.25s, background 0.25s; }
+.feature-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
+.feature-card svg { margin: 0 auto 0.4rem; color: var(--strategia-accent-blue); }
+.feature-card span { font-size: 0.8rem; font-weight: 700; }
+
+.btn-white-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: #fff; color: var(--strategia-navy);
+  padding: 0.8rem 1.85rem; border-radius: 0.6rem;
+  font-weight: 800; font-size: 0.9rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.btn-white-cta:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(255,255,255,0.25); }
+.btn-white-cta .arrow { display: inline-block; animation: arrowNudge 1.5s ease-in-out infinite; }
+@keyframes arrowNudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
+
+/* Final Showdown specific */
+.final-showdown-card { background: linear-gradient(135deg, #000b1f, #001a3d 55%, #002952); }
+.trophy-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(90deg, rgba(234,179,8,0.2), rgba(249,115,22,0.2)); border: 1px solid rgba(250,204,21,0.3); border-radius: 999px; padding: 0.55rem 1.4rem; color: #facc15; font-weight: 800; font-size: 0.85rem; margin-bottom: 1.25rem; }
+.final-title { text-align: center; font-size: clamp(2.2rem, 7vw, 4.5rem); margin: 0 0 1rem; background: linear-gradient(90deg, #facc15, #fdba74, #eab308); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.final-desc { text-align: center; max-width: 42rem; margin: 0 auto 1.5rem; color: #ddd6fe; line-height: 1.7; }
+.final-prize-box { position: relative; overflow: hidden; max-width: 32rem; margin: 0 auto 1.5rem; text-align: center; background: linear-gradient(90deg, rgba(234,179,8,0.15), rgba(249,115,22,0.15)); border: 1px solid rgba(250,204,21,0.3); border-radius: 1.5rem; padding: 1.5rem; }
+.final-prize-label { color: #facc15; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; animation: labelFade 2s ease-in-out infinite; }
+@keyframes labelFade { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+.final-prize-value { font-size: clamp(2.4rem, 6vw, 3.4rem); font-weight: 900; background: linear-gradient(90deg, #facc15, #fdba74, #eab308); -webkit-background-clip: text; background-clip: text; color: transparent; animation: prizePulse 3s ease-in-out infinite; margin-bottom: 0.5rem; }
+@keyframes prizePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+.final-prize-sub { color: #fde68a; font-size: 1.05rem; }
+.final-cta-row { text-align: center; }
+
+/* Panel discussion specific */
+.panel-card { background: linear-gradient(135deg, #001a3d, #002952 55%, var(--strategia-navy)); }
+/* Startup expo specific */
+.expo-card { background: linear-gradient(135deg, var(--strategia-navy), #001a3d 55%, #000b1f); }
+
+/* ---------- Resource downloads ---------- */
+.resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 40rem; margin: 0 auto; }
+@media (max-width: 640px) { .resource-grid { grid-template-columns: 1fr; } }
+.resource-card { position: relative; aspect-ratio: 1240/1748; border-radius: 0.9rem; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.25); background: #e5e7eb; display: block; transition: transform 0.3s, box-shadow 0.3s; }
+.resource-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 30px 55px rgba(0,0,0,0.3); }
+.resource-card img { width: 100%; height: 100%; object-fit: cover; }
+.resource-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+.resource-card:hover .resource-overlay { opacity: 1; }
+.resource-overlay span { background: #fff; color: var(--strategia-navy); padding: 0.7rem 1.5rem; border-radius: 999px; font-weight: 800; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; }
