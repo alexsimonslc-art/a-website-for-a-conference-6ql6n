@@ -156,4 +156,108 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // ---------- Hero video fallback ----------
+  document.querySelectorAll('.hero-events video, .hero-home video').forEach(video => {
+    const fallback = video.parentElement.querySelector('.hero-fallback-bg');
+    const showFallback = () => { if (fallback) fallback.style.display = 'block'; video.style.display = 'none'; };
+    video.addEventListener('error', showFallback);
+    video.addEventListener('stalled', () => { if (video.readyState === 0) showFallback(); });
+    // If nothing has loaded after 4s (e.g. asset missing / wrong path), fall back gracefully.
+    setTimeout(() => { if (video.readyState === 0) showFallback(); }, 4000);
+  });
+
+  // ---------- Interactive particle canvas (mouse-repel) ----------
+  document.querySelectorAll('[data-particles]').forEach(canvas => {
+    const section = canvas.closest('.dark-feature-section') || canvas.parentElement;
+    const ctx = canvas.getContext('2d');
+    const count = parseInt(canvas.dataset.particles, 10) || 120;
+    const colors = (canvas.dataset.particleColors || '255,255,255|96,165,250|59,130,246').split('|');
+    let W, H, particles = [], mouse = { x: -9999, y: -9999 };
+
+    function resize() {
+      const rect = section.getBoundingClientRect();
+      W = canvas.width = rect.width;
+      H = canvas.height = rect.height;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        r: Math.random() * 1.8 + 0.6,
+        color: colors[i % colors.length],
+        baseAlpha: Math.random() * 0.5 + 0.3
+      });
+    }
+
+    section.addEventListener('mousemove', (e) => {
+      const rect = section.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    section.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+    function tick() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 110) {
+          const force = (110 - dist) / 110;
+          p.x += (dx / (dist || 1)) * force * 3.2;
+          p.y += (dy / (dist || 1)) * force * 3.2;
+        }
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+        const glow = dist < 110 ? p.baseAlpha + (110 - dist) / 110 * 0.5 : p.baseAlpha;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, dist < 110 ? p.r * 1.6 : p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color},${Math.min(glow, 1)})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(tick);
+    }
+    tick();
+  });
+
+  // ---------- Mouse-repel hover for floating mic/wave elements ----------
+  document.querySelectorAll('[data-hover-repel]').forEach(zone => {
+    zone.addEventListener('mousemove', (e) => {
+      const rect = zone.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      zone.querySelectorAll('.float-mic, .wave-bar').forEach(el => {
+        const elRect = el.getBoundingClientRect();
+        const elX = elRect.left + elRect.width / 2 - rect.left;
+        const elY = elRect.top + elRect.height / 2 - rect.top;
+        const dx = x - elX;
+        const dy = y - elY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 180) {
+          const force = (180 - dist) / 180;
+          const angle = Math.atan2(dy, dx);
+          const moveX = Math.cos(angle + Math.PI) * force * 70;
+          const moveY = Math.sin(angle + Math.PI) * force * 70;
+          el.style.transform = `translate(${moveX}px, ${moveY}px) scale(${1 + force * 0.5})`;
+          el.style.opacity = '1';
+        } else {
+          el.style.transform = 'translate(0,0) scale(1)';
+        }
+      });
+    });
+    zone.addEventListener('mouseleave', () => {
+      zone.querySelectorAll('.float-mic, .wave-bar').forEach(el => {
+        el.style.transform = 'translate(0,0) scale(1)';
+      });
+    });
+  });
 });
