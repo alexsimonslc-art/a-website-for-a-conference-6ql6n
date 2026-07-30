@@ -262,3 +262,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .resource-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
 .resource-card:hover .resource-overlay { opacity: 1; }
 .resource-overlay span { background: #fff; color: var(--strategia-navy); padding: 0.7rem 1.5rem; border-radius: 999px; font-weight: 800; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; }
+
+/* ---------- Interactive particle canvas ---------- */
+.particle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.dark-feature-section { cursor: default; }
