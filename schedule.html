@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Schedule - STRATEGIA'26</title>
+<meta name="description" content="Check out the complete event timeline and schedule for STRATEGIA 2026." />
+<link rel="stylesheet" href="./css/style.css" />
+<style>
+  .hero-schedule {
+    position: relative; min-height: 45vh; display: flex; align-items: center;
+    color: #fff; overflow: hidden; text-align: center;
+    background: linear-gradient(135deg, var(--strategia-navy) 0%, #0f2e5c 60%, var(--strategia-red) 150%);
+  }
+  .hero-schedule::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(227,6,19,0.15), transparent 50%);
+  }
+  .hero-schedule-content { position: relative; z-index: 3; width: 100%; padding-top: 5rem; }
+  .hero-schedule h1 { font-size: clamp(2rem, 5vw, 3.8rem); margin: 0 0 0.5rem; }
+  .hero-schedule h1 span { color: #ffd166; }
+  .hero-schedule p { max-width: 32rem; margin: 0 auto; color: rgba(255,255,255,0.85); font-size: 1.05rem; }
+
+  .schedule-section { padding: 5rem 0; background: linear-gradient(180deg, #f8fafc, #fff); }
+  
+  .day-selector { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3.5rem; }
+  .day-btn {
+    background: #fff; border: 1px solid rgba(0,32,78,0.1); border-radius: 999px;
+    padding: 0.75rem 2rem; font-weight: 700; font-size: 0.95rem; color: var(--strategia-navy);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.3s ease;
+  }
+  .day-btn.active {
+    background: var(--strategia-navy); color: #fff; border-color: var(--strategia-navy);
+    box-shadow: 0 10px 20px rgba(0,32,78,0.25);
+  }
+  .day-btn:hover:not(.active) {
+    transform: translateY(-2px); border-color: var(--strategia-red); color: var(--strategia-red);
+  }
+
+  .timeline { max-width: 800px; margin: 0 auto; position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ""; position: absolute; left: 7px; top: 0; bottom: 0;
+    width: 2px; background: rgba(0,32,78,0.08);
+  }
+
+  .timeline-item { position: relative; margin-bottom: 3rem; }
+  .timeline-item::before {
+    content: ""; position: absolute; left: -2.3rem; top: 0.3rem;
+    width: 16px; height: 16px; border-radius: 50%; background: #fff;
+    border: 3px solid var(--strategia-red); box-shadow: 0 0 0 4px rgba(227,6,19,0.15);
+    z-index: 2; transition: all 0.3s ease;
+  }
+  .timeline-item:hover::before {
+    background: var(--strategia-red); scale: 1.25;
+  }
+
+  .timeline-card {
+    background: #fff; border-radius: 1rem; padding: 1.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid rgba(0,32,78,0.03);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .timeline-card:hover {
+    transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  }
+
+  .time-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(227,6,19,0.08); color: var(--strategia-red);
+    font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.85rem; border-radius: 999px;
+    margin-bottom: 0.85rem;
+  }
+
+  .timeline-card h3 { margin: 0 0 0.5rem; font-size: 1.25rem; color: var(--strategia-navy); }
+  .timeline-card p { margin: 0 0 1rem; color: var(--strategia-gray-dark); font-size: 0.9rem; line-height: 1.6; }
+
+  .meta-row { display: flex; flex-wrap: wrap; gap: 1.5rem; border-top: 1px solid rgba(0,32,78,0.06); padding-top: 0.85rem; font-size: 0.8rem; color: #6b7280; }
+  .meta-item { display: flex; align-items: center; gap: 0.35rem; }
+  .meta-item strong { color: var(--strategia-navy); }
+
+  .day-content { display: none; }
+  .day-content.active { display: block; animation: fadeInUp 0.4s ease-out; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">STRATEGIA<span>'26</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="event.html">Events</a></li>
+      <li><a href="schedule.html" class="active">Schedule</a></li>
+      <li><a href="index.html#sponsors">Sponsors</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="#" class="nav-cta">Register</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero-schedule">
+  <div class="hero-schedule-content container">
+    <div class="hero-eyebrow"><span class="eyebrow-pill">📅 Loyola College, Chennai · 2026</span></div>
+    <h1 class="dm-sans-bold">Event <span>Schedule</span></h1>
+    <p>Plan your strategy experience. Navigate the high-stakes arenas, networking breaks, and the ultimate championship final.</p>
+  </div>
+</header>
+
+<section class="schedule-section">
+  <div class="container">
+    <div class="day-selector">
+      <button class="day-btn active" onclick="switchDay(1)">Day 1 (Feb 18)</button>
+      <button class="day-btn" onclick="switchDay(2)">Day 2 (Feb 19)</button>
+    </div>
+
+    <!-- Day 1 Schedule -->
+    <div id="day-1" class="day-content active">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">08:30 AM - 09:30 AM</span>
+            <h3 class="dm-sans-bold">Registration &amp; Morning Kits</h3>
+            <p>Check-in at the Loyola Grand Assembly Hall. Collect your official delegate badges, premium strategist welcome kit, and event credentials.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Grand Assembly Hall</strong></div>
+              <div class="meta-item">👔 Dress Code: <strong>Business Formal</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">09:30 AM - 10:15 AM</span>
+            <h3 class="dm-sans-bold">Grand Inaugural Ceremony</h3>
+            <p>Welcome address by the Department of B.Com (Honours), keynote speech from industry leaders, and official opening statement of STRATEGIA'26.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Main Auditorium</strong></div>
+              <div class="meta-item">🎙️ Keynote: <strong>Loyola Alumni Circle</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">10:30 AM - 01:00 PM</span>
+            <h3 class="dm-sans-bold">StrategIQ: Preliminary Round</h3>
+            <p>The ultimate corporate, tech, and economic quizzing challenge starts here. A fast-paced written round designed to filter the top six masterminds.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Seminar Hall A</strong></div>
+              <div class="meta-item">🏆 Prize: <strong>Quiz Finals Qualifier</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">01:00 PM - 02:00 PM</span>
+            <h3 class="dm-sans-bold">Networking Luncheon</h3>
+            <p>Take a break, share insights, and connect with fellow participants and judges over a premium catered lunch.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>VIP Dining Arena</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">02:00 PM - 04:30 PM</span>
+            <h3 class="dm-sans-bold">Market Masters: Live Simulation</h3>
+            <p>Real-time corporate trading simulation. Handle news flashes, manage volatile tickers, and execute trades under high-intensity market shifts.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Finance Lab</strong></div>
+              <div class="meta-item">⚡ Setup: <strong>Bring Laptops &amp; Chargers</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 Schedule -->
+    <div id="day-2" class="day-content">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">09:00 AM - 11:30 AM</span>
+            <h3 class="dm-sans-bold">VentureX Pitching Arena</h3>
+            <p>Pitch your team's innovative ideas to our venture council. Strict 7-minute pitch and 5-minute intense Q&amp;A format.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Incubation Space</strong></div>
+              <div class="meta-item">🎤 Format: <strong>Deck Presentation</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">11:45 AM - 01:30 PM</span>
+            <h3 class="dm-sans-bold">Case Quest: Consultation Board</h3>
+            <p>The final consulting showdown. Pitch your solution to a real-world complex business turnaround case and defend your quantitative model.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Boardroom B</strong></div>
+              <div class="meta-item">📊 Topic: <strong>Turnaround Strategy</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">01:30 PM - 02:30 PM</span>
+            <h3 class="dm-sans-bold">Lunch &amp; Strategy Huddle</h3>
+            <p>Final preparation time for championship teams before the main stage showdown.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Food Lounge</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">02:45 PM - 04:15 PM</span>
+            <h3 class="dm-sans-bold">The Final Showdown</h3>
+            <p>The flagship final round where the top qualifiers from each stream collide to claim the title of STRATEGIA'26 Champions.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Main Auditorium Stage</strong></div>
+              <div class="meta-item">🌟 Spotlight: <strong>Grand Live Audience</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <span class="time-badge">04:30 PM - 05:30 PM</span>
+            <h3 class="dm-sans-bold">Valedictory &amp; Awards Ceremony</h3>
+            <p>Distribution of trophies, certificates, and cash prizes of up to ₹2,98,000 to the winning strategists.</p>
+            <div class="meta-row">
+              <div class="meta-item">📍 Venue: <strong>Main Auditorium</strong></div>
+              <div class="meta-item">🏆 Grand Prize: <strong>₹2,98,000 Pool</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">STRATEGIA'26</div>
+      <p style="max-width:20rem;font-size:0.85rem;">The Ultimate Business Strategy Challenge, presented by the Department of B.Com (Honours), Loyola College, Chennai.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="event.html">Events</a>
+        <a href="schedule.html">Schedule</a>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="index.html#sponsors">Sponsors</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="#">Rules &amp; Regulations</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 STRATEGIA. All rights reserved.</div>
+</footer>
+
+<script>
+  function switchDay(day) {
+    document.querySelectorAll('.day-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.day-btn').forEach(el => el.classList.remove('active'));
+    
+    document.getElementById('day-' + day).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
